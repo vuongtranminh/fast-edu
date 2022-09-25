@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.OrderMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.OrderPo">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="paymented_at" jdbcType="TIMESTAMP" property="paymentedAt" />
+		<result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="commune" jdbcType="VARCHAR" property="commune" />
+		<result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
+		<result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="district" jdbcType="VARCHAR" property="district" />
+		<result column="delivered_at" jdbcType="TIMESTAMP" property="deliveredAt" />
+		<result column="status" jdbcType="TINYINT" property="status" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="app.command.api.data.OrderPo">
+		<result column="note" jdbcType="LONGVARCHAR" property="note" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		idaddress, paymented_at, total_price, city, commune, buyer_name, created_at, buyer_id, is_deleted, updated_at, phone, district, , delivered_at, status
+	</sql>
+	<sql id="Blob_Column_List">
+		note
+	</sql>
+	<select id="findAll" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from order
+	</select>
+	<select id="getById" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from order where id = #{id, jdbcType=BIGINT}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.OrderPo">
+		insert into order (<include refid="Base_Column_List" />, <include refid="Blob_Column_List" />) 
+		values (#{note, jdbcType=LONGVARCHAR}, #{address, jdbcType=VARCHAR}, #{paymentedAt, jdbcType=TIMESTAMP}, #{totalPrice, jdbcType=DECIMAL}, #{city, jdbcType=VARCHAR}, #{commune, jdbcType=VARCHAR}, #{buyerName, jdbcType=VARCHAR}, #{createdAt, jdbcType=TIMESTAMP}, #{buyerId, jdbcType=BIGINT}, #{isDeleted, jdbcType=TINYINT}, #{updatedAt, jdbcType=TIMESTAMP}, #{phone, jdbcType=VARCHAR}, #{district, jdbcType=VARCHAR}, #{id, jdbcType=BIGINT}, #{deliveredAt, jdbcType=TIMESTAMP}, #{status, jdbcType=TINYINT})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.OrderPo">
+		update order
+			<set>
+				<if test="note != null">
+					note = #{note, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="address != null">
+					address = #{address, jdbcType=VARCHAR}, 
+				</if>
+				<if test="paymentedAt != null">
+					paymented_at = #{paymentedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="totalPrice != null">
+					total_price = #{totalPrice, jdbcType=DECIMAL}, 
+				</if>
+				<if test="city != null">
+					city = #{city, jdbcType=VARCHAR}, 
+				</if>
+				<if test="commune != null">
+					commune = #{commune, jdbcType=VARCHAR}, 
+				</if>
+				<if test="buyerName != null">
+					buyer_name = #{buyerName, jdbcType=VARCHAR}, 
+				</if>
+				<if test="createdAt != null">
+					created_at = #{createdAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="buyerId != null">
+					buyer_id = #{buyerId, jdbcType=BIGINT}, 
+				</if>
+				<if test="isDeleted != null">
+					is_deleted = #{isDeleted, jdbcType=TINYINT}, 
+				</if>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="phone != null">
+					phone = #{phone, jdbcType=VARCHAR}, 
+				</if>
+				<if test="district != null">
+					district = #{district, jdbcType=VARCHAR}, 
+				</if>
+				<if test="id != null">
+					id = #{id, jdbcType=BIGINT}, 
+				</if>
+				<if test="deliveredAt != null">
+					delivered_at = #{deliveredAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="status != null">
+					status = #{status, jdbcType=TINYINT}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=BIGINT}
+	</update>
+	<delete id="deleteById">
+		delete from order where id = #{id, jdbcType=BIGINT}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from order 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from order
+	</select>
+</mapper>

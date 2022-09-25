@@ -1,0 +1,259 @@
+2022-09-24 17:55:22.768  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] app.ServiceDiscoveryApplication          : Starting ServiceDiscoveryApplication using Java 11.0.15.1 on TRAN-MINH-VUONG with PID 4000 (F:\Project\fast-edu\edu-microservice-backend\service-discovery\target\classes started by Admin in F:\Project\fast-edu\edu-microservice-backend)
+2022-09-24 17:55:22.784  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] app.ServiceDiscoveryApplication          : The following profiles are active: dev
+2022-09-24 17:55:22.862  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-24 17:55:22.862  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-24 17:55:24.378  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d03f1060-413b-33c7-bad5-f93ef4a59759
+2022-09-24 17:55:25.331  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8761 (http)
+2022-09-24 17:55:25.331  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-24 17:55:25.331  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-09-24 17:55:25.456  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-24 17:55:25.456  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2594 ms
+2022-09-24 17:55:26.846  WARN [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2022-09-24 17:55:28.300  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.s.j.s.i.a.WebApplicationImpl           : Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2022-09-24 17:55:28.347  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-09-24 17:55:28.347  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-09-24 17:55:28.550  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-09-24 17:55:28.550  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-09-24 17:55:30.503  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-24 17:55:30.971  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-09-24 17:55:31.581  WARN [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-09-24 17:55:31.597  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-09-24 17:55:31.628  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-09-24 17:55:31.628  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2022-09-24 17:55:31.643  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1664016931628 with initial instances count: 0
+2022-09-24 17:55:31.690  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2022-09-24 17:55:31.690  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
+2022-09-24 17:55:31.987  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-09-24 17:55:31.987  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-09-24 17:55:31.987  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-09-24 17:55:31.987  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-09-24 17:55:32.065  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
+2022-09-24 17:55:32.065  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2022-09-24 17:55:32.065  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2022-09-24 17:55:32.159  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 26 endpoint(s) beneath base path '/actuator'
+2022-09-24 17:55:32.253  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SERVICE-DISCOVERY with eureka with status UP
+2022-09-24 17:55:32.253  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] o.s.c.n.e.server.EurekaServerBootstrap   : Setting the eureka configuration..
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8761 (http) with context path ''
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2022-09-24 17:55:32.268  INFO [SERVICE-DISCOVERY,,] 4000 --- [Thread-15] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2022-09-24 17:55:32.800  INFO [SERVICE-DISCOVERY,,] 4000 --- [restartedMain] app.ServiceDiscoveryApplication          : Started ServiceDiscoveryApplication in 11.345 seconds (JVM running for 13.648)
+2022-09-24 17:55:33.237  INFO [SERVICE-DISCOVERY,,] 4000 --- [RMI TCP Connection(1)-192.168.25.102] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-24 17:55:33.237  INFO [SERVICE-DISCOVERY,,] 4000 --- [RMI TCP Connection(1)-192.168.25.102] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-24 17:55:33.237  INFO [SERVICE-DISCOVERY,,] 4000 --- [RMI TCP Connection(1)-192.168.25.102] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-09-24 17:56:27.688  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] app.CourseServiceApplication             : Starting CourseServiceApplication using Java 11.0.15.1 on TRAN-MINH-VUONG with PID 9040 (F:\Project\fast-edu\edu-microservice-backend\course-service\target\classes started by Admin in F:\Project\fast-edu\edu-microservice-backend)
+2022-09-24 17:56:27.688  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] app.CourseServiceApplication             : The following profiles are active: dev
+2022-09-24 17:56:27.720  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.context.config.ConfigDataLoader    : Fetching config from server at : http://localhost:9296
+2022-09-24 17:56:27.720  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.context.config.ConfigDataLoader    : Connect Timeout Exception on Url - http://localhost:9296. Will be trying the next url if available
+2022-09-24 17:56:27.720  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.context.config.ConfigDataLoader    : Could not locate PropertySource ([ConfigServerConfigDataResource@658eb27f uris = array<String>['http://localhost:9296'], optional = true, profiles = list['dev']]): I/O error on GET request for "http://localhost:9296/COURSE-SERVICE/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2022-09-24 17:56:27.735  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-24 17:56:27.735  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-24 17:56:28.798  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 17:56:28.813  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2022-09-24 17:56:29.110  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=821db513-505a-3cfb-a638-cce9168c37ab
+2022-09-24 17:56:29.876  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8500 (http)
+2022-09-24 17:56:29.892  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-24 17:56:29.892  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-09-24 17:56:30.001  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.a.c.c.C.[.[.[/course-service]          : Initializing Spring embedded WebApplicationContext
+2022-09-24 17:56:30.001  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2266 ms
+2022-09-24 17:56:30.235  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-24 17:56:30.407  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-24 17:56:30.407  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:edu_dev_db'
+2022-09-24 17:56:31.313  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2022-09-24 17:56:32.282  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 17:56:32.813  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 7.7.3 by Redgate
+2022-09-24 17:56:32.845  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.i.database.base.DatabaseType       : Database: jdbc:h2:mem:edu_dev_db (H2 1.4)
+2022-09-24 17:56:32.907  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.021s)
+2022-09-24 17:56:32.907  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2022-09-24 17:56:32.938  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.i.s.DefaultSqlScriptExecutor       : 0 rows affected
+2022-09-24 17:56:32.938  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.i.s.DefaultSqlScriptExecutor       : 0 rows affected
+2022-09-24 17:56:32.954  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2022-09-24 17:56:32.954  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - create courses table"
+2022-09-24 17:56:32.954  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.c.i.s.DefaultSqlScriptExecutor       : 0 rows affected
+2022-09-24 17:56:32.970  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "PUBLIC", now at version v1 (execution time 00:00.026s)
+2022-09-24 17:56:33.063  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-24 17:56:33.126  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-09-24 17:56:33.282  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-24 17:56:33.407  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-09-24 17:56:33.579  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-24 17:56:33.595  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 17:56:33.876  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-24 17:56:34.860  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-09-24 17:56:35.610  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-09-24 17:56:36.282  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2022-09-24 17:56:36.970  WARN [COURSE-SERVICE,,] 9040 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-09-24 17:56:37.032  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 27 endpoint(s) beneath base path '/actuator'
+2022-09-24 17:56:37.141  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-09-24 17:56:37.173  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-09-24 17:56:37.173  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-09-24 17:56:37.188  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-09-24 17:56:37.641  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-09-24 17:56:37.641  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-09-24 17:56:37.641  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-09-24 17:56:37.641  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1664016997641 with initial instances count: 0
+2022-09-24 17:56:37.657  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application COURSE-SERVICE with eureka with status UP
+2022-09-24 17:56:37.657  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1664016997657, current=UP, previous=STARTING]
+2022-09-24 17:56:37.657  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_COURSE-SERVICE/192.168.25.102:COURSE-SERVICE:8500: registering service...
+2022-09-24 17:56:37.688  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8500 (http) with context path '/course-service'
+2022-09-24 17:56:37.688  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8500
+2022-09-24 17:56:37.735  INFO [SERVICE-DISCOVERY,683566dbd3e7e142,683566dbd3e7e142] 4000 --- [http-nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance COURSE-SERVICE/192.168.25.102:COURSE-SERVICE:8500 with status UP (replication=false)
+2022-09-24 17:56:37.751  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_COURSE-SERVICE/192.168.25.102:COURSE-SERVICE:8500 - registration status: 204
+2022-09-24 17:56:38.126  INFO [COURSE-SERVICE,,] 9040 --- [restartedMain] app.CourseServiceApplication             : Started CourseServiceApplication in 13.717 seconds (JVM running for 15.347)
+2022-09-24 17:56:38.407  INFO [SERVICE-DISCOVERY,1b926e9a7a0036b1,1b926e9a7a0036b1] 4000 --- [http-nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance COURSE-SERVICE/192.168.25.102:COURSE-SERVICE:8500 with status UP (replication=true)
+2022-09-24 17:56:38.548  INFO [COURSE-SERVICE,,] 9040 --- [RMI TCP Connection(3)-192.168.25.102] o.a.c.c.C.[.[.[/course-service]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-24 17:56:38.548  INFO [COURSE-SERVICE,,] 9040 --- [RMI TCP Connection(3)-192.168.25.102] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-24 17:56:38.548  INFO [COURSE-SERVICE,,] 9040 --- [RMI TCP Connection(3)-192.168.25.102] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-09-24 17:56:39.110  WARN [SERVICE-DISCOVERY,,] 4000 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
+2022-09-24 17:56:39.110  WARN [SERVICE-DISCOVERY,,] 4000 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 3 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:785) ~[spring-web-5.3.13.jar:5.3.13]
+	at org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:69) ~[spring-cloud-sleuth-zipkin-3.0.4.jar:3.0.4]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:660) ~[spring-web-5.3.13.jar:5.3.13]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:151) ~[spring-cloud-sleuth-zipkin-3.0.4.jar:3.0.4]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender$HttpPostCall.doExecute(RestTemplateSender.java:169) ~[spring-cloud-sleuth-zipkin-3.0.4.jar:3.0.4]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender$HttpPostCall.doExecute(RestTemplateSender.java:159) ~[spring-cloud-sleuth-zipkin-3.0.4.jar:3.0.4]
+	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.0.jar:na]
+	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.1.jar:na]
+	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) ~[zipkin-reporter-2.16.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.base/java.net.PlainSocketImpl.waitForConnect(Native Method) ~[na:na]
+	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:107) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:608) ~[na:na]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:177) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:242) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:341) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:362) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1253) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1187) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1015) ~[na:na]
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.13.jar:5.3.13]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.13.jar:5.3.13]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.13.jar:5.3.13]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:776) ~[spring-web-5.3.13.jar:5.3.13]
+	... 9 common frames omitted
+
+2022-09-24 17:57:07.655  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2022-09-24 17:57:07.656  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-09-24 17:57:07.678  INFO [COURSE-SERVICE,,] 9040 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-09-24 17:57:32.294  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 17:58:32.306  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 17:59:32.314  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:00:32.329  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2022-09-24 18:01:32.344  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 14ms
+2022-09-24 18:01:37.203  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:02:32.353  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 18:03:32.362  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 8ms
+2022-09-24 18:04:32.372  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:05:32.382  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 18:06:32.387  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2022-09-24 18:06:37.212  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:07:32.395  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:08:32.405  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:09:32.417  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 18:10:32.071  INFO [SERVICE-DISCOVERY,,] 4000 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2022-09-24 18:10:32.430  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 13ms
+2022-09-24 18:11:32.439  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 8ms
+2022-09-24 18:11:37.225  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:12:32.446  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2022-09-24 18:13:32.453  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:14:32.463  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:15:32.465  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 18:16:32.472  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:16:37.238  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:17:32.481  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2022-09-24 18:18:32.485  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 18:19:32.486  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:20:32.496  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:21:32.510  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 13ms
+2022-09-24 18:21:37.255  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:22:32.518  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:23:32.524  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2022-09-24 18:24:32.526  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:25:32.075  INFO [SERVICE-DISCOVERY,,] 4000 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2022-09-24 18:25:32.528  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 18:26:32.530  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:26:37.265  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:27:32.544  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 14ms
+2022-09-24 18:28:32.548  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2022-09-24 18:29:32.549  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:30:32.551  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:31:32.560  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 18:31:37.272  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:32:32.573  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2022-09-24 18:33:32.574  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 18:34:32.584  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:35:32.584  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 18:36:32.586  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:36:37.273  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:37:32.590  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2022-09-24 18:38:32.594  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2022-09-24 18:39:32.603  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 18:40:32.089  INFO [SERVICE-DISCOVERY,,] 4000 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2022-09-24 18:40:32.604  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:41:32.606  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:41:37.278  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:42:32.618  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 18:43:32.625  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2022-09-24 18:44:32.625  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 18:45:32.628  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2022-09-24 18:46:32.635  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2022-09-24 18:46:37.294  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:47:32.639  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2022-09-24 18:48:32.645  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2022-09-24 18:49:32.646  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2022-09-24 18:50:32.648  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 18:51:32.650  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:51:37.307  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:52:32.661  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 18:53:32.673  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2022-09-24 18:54:32.686  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2022-09-24 18:55:32.103  INFO [SERVICE-DISCOVERY,,] 4000 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2022-09-24 18:55:32.697  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 18:56:32.699  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 18:56:37.308  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 18:57:32.701  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 18:58:32.709  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 18:59:32.718  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 8ms
+2022-09-24 19:00:32.718  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2022-09-24 19:01:32.719  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 19:01:37.313  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 19:02:32.729  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 19:03:32.738  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2022-09-24 19:04:32.749  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2022-09-24 19:05:32.753  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2022-09-24 19:06:32.763  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2022-09-24 19:06:37.327  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 19:07:32.771  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2022-09-24 19:08:32.779  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 8ms
+2022-09-24 19:09:32.782  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 19:10:32.111  INFO [SERVICE-DISCOVERY,,] 4000 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2022-09-24 19:10:32.783  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 19:11:32.785  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2022-09-24 19:11:37.332  INFO [COURSE-SERVICE,,] 9040 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-09-24 19:12:32.787  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 19:13:32.789  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 19:14:32.791  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2022-09-24 19:15:32.795  INFO [SERVICE-DISCOVERY,,] 4000 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms

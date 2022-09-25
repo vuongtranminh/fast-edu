@@ -33,10 +33,10 @@ spring:
               - PATCH
               - OPTIONS
       routes:
-        - id: ORDER-SERVICE
-          uri: lb://ORDER-SERVICE
+        - id: COURSE-SERVICE
+          uri: lb://COURSE-SERVICE
           predicates:
-            - Path=/order-service/**
+            - Path=/course-service/**
         - id: PAYMENT-SERVICE
           uri: lb://PAYMENT-SERVICE
           predicates:

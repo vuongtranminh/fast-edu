@@ -1,0 +1,7 @@
+
+spring:
+  application:
+    name: COMMON-SERVICE
+  profiles:
+    active:
+      - dev

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.AddressMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.AddressPo">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="user_id" jdbcType="BIGINT" property="userId" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="commune" jdbcType="VARCHAR" property="commune" />
+		<result column="district" jdbcType="VARCHAR" property="district" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="type" jdbcType="TINYINT" property="type" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		idaddress, updated_at, user_id, city, phone, commune, district, name, created_at, , type
+	</sql>
+	<select id="findAll" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from address
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from address where id = #{id, jdbcType=BIGINT}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.AddressPo">
+		insert into address (<include refid="Base_Column_List" />, <include refid="Blob_Column_List" />) 
+		values (#{address, jdbcType=VARCHAR}, #{updatedAt, jdbcType=TIMESTAMP}, #{userId, jdbcType=BIGINT}, #{city, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{commune, jdbcType=VARCHAR}, #{district, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{createdAt, jdbcType=TIMESTAMP}, #{id, jdbcType=BIGINT}, #{type, jdbcType=TINYINT})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.AddressPo">
+		update address
+			<set>
+				<if test="address != null">
+					address = #{address, jdbcType=VARCHAR}, 
+				</if>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="userId != null">
+					user_id = #{userId, jdbcType=BIGINT}, 
+				</if>
+				<if test="city != null">
+					city = #{city, jdbcType=VARCHAR}, 
+				</if>
+				<if test="phone != null">
+					phone = #{phone, jdbcType=VARCHAR}, 
+				</if>
+				<if test="commune != null">
+					commune = #{commune, jdbcType=VARCHAR}, 
+				</if>
+				<if test="district != null">
+					district = #{district, jdbcType=VARCHAR}, 
+				</if>
+				<if test="name != null">
+					name = #{name, jdbcType=VARCHAR}, 
+				</if>
+				<if test="createdAt != null">
+					created_at = #{createdAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="id != null">
+					id = #{id, jdbcType=BIGINT}, 
+				</if>
+				<if test="type != null">
+					type = #{type, jdbcType=TINYINT}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=BIGINT}
+	</update>
+	<delete id="deleteById">
+		delete from address where id = #{id, jdbcType=BIGINT}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from address 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from address
+	</select>
+</mapper>
