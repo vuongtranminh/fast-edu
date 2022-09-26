@@ -119,7 +119,7 @@ public class Table {
         columnInfo.forEach((columnName, column) -> {
             if(columnName.equals(primaryKeyColumnName)) {
                 sbBaseResultMap.insert(0, column.generateResult());
-                sbBaseColumnList.insert(0, column.getColumnName()).append(", ");
+                sbBaseColumnList.insert(0, column.getColumnName() + ", ");
             } else {
                 if((LONGTEXT).equals(column.getDatatype())) {
                     sbResultMapWithBLOBs.append(column.generateResult());
@@ -243,21 +243,17 @@ public class Table {
                     .append("\t\tselect <include refid=\"Base_Column_List\" />, <include refid=\"Blob_Column_List\" /> from ")
                     .append(tableName).append(" \n").append("\t\torder by id desc \n").append("\t\tlimit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}\n")
                     .append("\t</select>\n");
-
-            // countAll
-            sb.append("\t<select id=\"countAll\" resultType=\"java.lang.Long\">\n").append("\t\tselect count(*) from ").append(tableName)
-                    .append("\n").append("\t</select>\n");
         } else {
             // pagination
             sb.append("\t<select id=\"pagination\" parameterType=\"").append(packaje).append(".Pagination\" resultMap=\"BaseResultMap\">\n")
                     .append("\t\tselect <include refid=\"Base_Column_List\" /> from ")
                     .append(tableName).append(" \n").append("\t\torder by id desc \n").append("\t\tlimit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}\n")
                     .append("\t</select>\n");
-
-            // countAll
-            sb.append("\t<select id=\"countAll\" resultType=\"java.lang.Long\">\n").append("\t\tselect count(*) from ").append(tableName)
-                    .append("\n").append("\t</select>\n");
         }
+
+        // countAll
+        sb.append("\t<select id=\"countAll\" resultType=\"java.lang.Long\">\n").append("\t\tselect count(*) from ").append(tableName)
+                .append("\n").append("\t</select>\n");
 
         return sb.toString();
     }
@@ -273,6 +269,86 @@ public class Table {
         sb.append("public interface ").append(className).append("Dao extends BaseDao<").append(className).append("Po> {\n\n");
         sb.append("}");
 
+        return sb.toString();
+    }
+
+    public String generateRequestModel(String packaje) {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbImport = new StringBuilder();
+        StringBuilder sbInstance = new StringBuilder();
+        String sbConstructor = generateAllArgsConstructor();
+        StringBuilder sbAccessors  = new StringBuilder();
+        String sbBuilder = generateBuider();
+
+        sbImport.append("import java.io.Serializable;\n");
+
+        columnInfo.forEach((columnName, column) -> {
+            sbImport.append(column.generateImport());
+            sbInstance.append(column.generateInstance());
+            sbAccessors.append(column.generateAccessor());
+        });
+
+        sb.append("package " + packaje + ";\n\n");
+        sb.append(sbImport);
+        sb.append("\n");
+        sb.append("public class " + className + "RequestModel implements Serializable {\n\n");
+        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
+        sb.append(sbInstance);
+        sb.append("\n");
+        sb.append(sbConstructor);
+        sb.append("\n");
+        sb.append(sbAccessors);
+        sb.append("\n");
+        sb.append(sbBuilder);
+        sb.append("\n");
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    public String generateBuider() {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbInstance = new StringBuilder();
+        StringBuilder sbAccessorsBuilder  = new StringBuilder();
+        StringBuilder sbBuilder = new StringBuilder();
+
+        sbBuilder.append("\tpublic " + className + " build() {\n")
+                        .append("\treturn new " + className + "(");
+
+        columnInfo.forEach((columnName, column) -> {
+            sbInstance.append(column.generateInstance());
+            sbAccessorsBuilder.append(column.generateAccessorBuilder(className + "Builder"));
+            sbBuilder.append("this." + columnName + ", ");
+        });
+
+        sbBuilder.delete(sbBuilder.length() - 2, sbBuilder.length());
+        sbBuilder.append(");\n}");
+
+        sb.append("public static " + className + "Builder builder() { return new " + className + "Builder(); }");
+
+        sb.append("public static class " + className + "Builder {\n\n");
+        sb.append(sbInstance);
+        sb.append("\n");
+        sb.append(sbAccessorsBuilder);
+        sb.append("\n");
+        sb.append(sbBuilder);
+
+        return sb.toString();
+    }
+
+    public String generateAllArgsConstructor() {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbInnerConstructor = new StringBuilder();
+
+        sb.append("public " + className + "(");
+        columnInfo.forEach((columnName, column) -> {
+            sb.append(column.getJavaType() + " " + column.getColumnNameWithCamel() + ", ");
+            sbInnerConstructor.append("this." + column.getColumnNameWithCamel() + " = " + column.getColumnNameWithCamel() + ";\n");
+        });
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append(") {\n");
+        sb.append(sbInnerConstructor);
+        sb.append("}");
         return sb.toString();
     }
 

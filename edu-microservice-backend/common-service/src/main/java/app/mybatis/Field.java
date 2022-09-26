@@ -167,6 +167,13 @@ public class Field {
         return sb.toString();
     }
 
+    public String generateAccessorBuilder(String className) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\tpublic " + className + columnNameWithCamel + "(" + javaType + " " + columnNameWithCamel + ") {\n\t\tthis."
+                + columnNameWithCamel + " = " + columnNameWithCamel + ";\n\treturn this;\n}\n");
+        return sb.toString();
+    }
+
     public String generateResult() {
         StringBuilder sb = new StringBuilder();
         if(isPrimaryKey) {

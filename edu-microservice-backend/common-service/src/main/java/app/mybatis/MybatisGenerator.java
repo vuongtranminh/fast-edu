@@ -12,8 +12,9 @@ public class MybatisGenerator {
 
     private static Scanner sc = new Scanner(System.in);
     private static String schema = "";
-    private static String WORKING_DIRECTORY = System.getProperty("user.dir") + WORKING_FOLDER;
-    private static String WORKING_MAPPER_XML = System.getProperty("user.dir") + WORKING_RESOURCES;
+    private static String WORKING = System.getProperty("user.dir");
+    private static String WORKING_DIRECTORY = WORKING + WORKING_FOLDER;
+    private static String WORKING_MAPPER_XML = WORKING + WORKING_RESOURCES;
 
     public static void main(String[] args) {
         program();
@@ -21,7 +22,6 @@ public class MybatisGenerator {
 
     public static void program() {
         try (Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD)) {
-
 
             // get DatabaseMetaData object
             DatabaseMetaData dbmd = conn.getMetaData();
@@ -166,6 +166,8 @@ public class MybatisGenerator {
             writeFile(WORKING_DIRECTORY, tableInfo.getClassName() + "Dao.java", tableInfo.generateDao(PACKAGE));
             // wirteMapper.xml
             writeFile(WORKING_MAPPER_XML, tableInfo.getClassName() + "Mapper.xml", tableInfo.generateMapper(PACKAGE));
+            // wirteRequestModel.xml
+            writeFile(DIRECTORY_MODEL, tableInfo.getClassName() + "RequestModel.java", tableInfo.generateRequestModel(PACKAGE_MODEL));
 
             tablesInfo.put(tableName, tableInfo);
         }
