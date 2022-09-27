@@ -78,36 +78,38 @@ public class Table {
         return sb.toString();
     }
 
-    public String generatePo(String packaje) {
-        StringBuilder sb = new StringBuilder();
-        StringBuilder sbImport = new StringBuilder();
-        StringBuilder sbInstance = new StringBuilder();
-        StringBuilder sbConstructor = new StringBuilder();
-        StringBuilder sbAccessors  = new StringBuilder();
-
-        sbImport.append("import java.io.Serializable;\n");
-
-        columnInfo.forEach((columnName, column) -> {
-            sbImport.append(column.generateImport());
-            sbInstance.append(column.generateInstance());
-            sbAccessors.append(column.generateAccessor());
-        });
-
-        sb.append("package " + packaje + ";\n\n");
-        sb.append(sbImport);
-        sb.append("\n");
-        sb.append("public class " + className + "Po implements Serializable {\n\n");
-        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
-        sb.append(sbInstance);
-        sb.append("\n");
-        sb.append(sbConstructor);
-        sb.append("\n");
-        sb.append(sbAccessors);
-        sb.append("\n");
-        sb.append("}");
-
-        return sb.toString();
-    }
+//    public String generatePo(String packaje) {
+//        StringBuilder sb = new StringBuilder();
+//        StringBuilder sbImport = new StringBuilder();
+//        StringBuilder sbInstance = new StringBuilder();
+//        StringBuilder sbConstructor = new StringBuilder();
+//        StringBuilder sbAccessors  = new StringBuilder();
+//
+//        sbImport.append("import java.io.Serializable;\n");
+//
+//        columnInfo.forEach((columnName, column) -> {
+//            if(sbImport.indexOf(column.generateImport()) == -1) {
+//                sbImport.append(column.generateImport());
+//            }
+//            sbInstance.append(column.generateInstance());
+//            sbAccessors.append(column.generateAccessor());
+//        });
+//
+//        sb.append("package " + packaje + ";\n\n");
+//        sb.append(sbImport);
+//        sb.append("\n");
+//        sb.append("public class " + className + "Po implements Serializable {\n\n");
+//        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
+//        sb.append(sbInstance);
+//        sb.append("\n");
+//        sb.append(sbConstructor);
+//        sb.append("\n");
+//        sb.append(sbAccessors);
+//        sb.append("\n");
+//        sb.append("}");
+//
+//        return sb.toString();
+//    }
 
     public String generateMapper(String packaje) {
         StringBuilder sb = new StringBuilder();
@@ -272,83 +274,128 @@ public class Table {
         return sb.toString();
     }
 
-    public String generateRequestModel(String packaje) {
+    public String generateClass(String pkg, String className, boolean isGenerateAllArgsConstructor, boolean isGenerateBuilder) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbImport = new StringBuilder();
         StringBuilder sbInstance = new StringBuilder();
-        String sbConstructor = generateAllArgsConstructor();
         StringBuilder sbAccessors  = new StringBuilder();
-        String sbBuilder = generateBuider();
 
         sbImport.append("import java.io.Serializable;\n");
 
         columnInfo.forEach((columnName, column) -> {
-            sbImport.append(column.generateImport());
+            if(sbImport.indexOf(column.generateImport()) == -1) {
+                sbImport.append(column.generateImport());
+            }
             sbInstance.append(column.generateInstance());
             sbAccessors.append(column.generateAccessor());
         });
 
-        sb.append("package " + packaje + ";\n\n");
+        sb.append("package " + pkg + ";\n\n");
         sb.append(sbImport);
         sb.append("\n");
-        sb.append("public class " + className + "RequestModel implements Serializable {\n\n");
+        sb.append("public class " + className + " implements Serializable {\n\n");
         sb.append("\tprivate static final long serialVersionUID = 1L;\n");
         sb.append(sbInstance);
         sb.append("\n");
-        sb.append(sbConstructor);
-        sb.append("\n");
+        if(isGenerateAllArgsConstructor || isGenerateBuilder) {
+            String sbConstructor = generateAllArgsConstructor(className);
+            sb.append(sbConstructor);
+            sb.append("\n");
+        }
         sb.append(sbAccessors);
         sb.append("\n");
-        sb.append(sbBuilder);
+        if(isGenerateBuilder) {
+            String sbBuilder = generateBuider(className);
+            sb.append(sbBuilder);
+            sb.append("\n");
+        }
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    public String generatePo(String pkg) {
+        return generateClass(pkg, className + "Po", false, false);
+    }
+
+    public String generateRequestModel(String pkg) {
+        return generateClass(pkg, className + "RequestModel", true, true);
+    }
+
+    public String generateCreatedEvent(String pkg) {
+        return generateClass(pkg, className + "CreatedEvent", true, true);
+    }
+
+    public String generateUpdatedEvent(String pkg) {
+        return generateClass(pkg, className + "UpdatedEvent", true, true);
+    }
+
+    public String generateDeletedEvent(String pkg) {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbImport = new StringBuilder();
+        StringBuilder sbInstance = new StringBuilder();
+        StringBuilder sbAccessors  = new StringBuilder();
+
+        sbImport.append("import java.io.Serializable;\n");
+
+        sb.append("package " + pkg + ";\n\n");
+        sb.append(sbImport.append(primaryKeyInfo.generateImport()));
+        sb.append("\n");
+        sb.append("public class " + className + "DeletedEvent implements Serializable {\n\n");
+        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
+        sb.append(sbInstance.append(primaryKeyInfo.generateInstance()));
+        sb.append("\n");
+        sb.append(sbAccessors.append(primaryKeyInfo.generateAccessor()));
         sb.append("\n");
         sb.append("}");
 
         return sb.toString();
     }
 
-    public String generateBuider() {
+    public String generateBuider(String className) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbInstance = new StringBuilder();
         StringBuilder sbAccessorsBuilder  = new StringBuilder();
         StringBuilder sbBuilder = new StringBuilder();
 
-        sbBuilder.append("\tpublic " + className + " build() {\n")
-                        .append("\treturn new " + className + "(");
+        sbBuilder.append("\t\tpublic " + className + " build() {\n")
+                        .append("\t\t\treturn new " + className + "(");
 
         columnInfo.forEach((columnName, column) -> {
-            sbInstance.append(column.generateInstance());
+            sbInstance.append("\t").append(column.generateInstance());
             sbAccessorsBuilder.append(column.generateAccessorBuilder(className + "Builder"));
-            sbBuilder.append("this." + columnName + ", ");
+            sbBuilder.append("this." + column.getColumnNameWithCamel() + ", ");
         });
 
         sbBuilder.delete(sbBuilder.length() - 2, sbBuilder.length());
-        sbBuilder.append(");\n}");
+        sbBuilder.append(");\n\t\t}\n");
 
-        sb.append("public static " + className + "Builder builder() { return new " + className + "Builder(); }");
+        sb.append("\tpublic static " + className + "Builder builder() {\n\t\treturn new " + className + "Builder();\n\t}\n");
 
-        sb.append("public static class " + className + "Builder {\n\n");
+        sb.append("\tpublic static class " + className + "Builder {\n\n");
         sb.append(sbInstance);
         sb.append("\n");
         sb.append(sbAccessorsBuilder);
         sb.append("\n");
         sb.append(sbBuilder);
+        sb.append("\n\t}");
 
         return sb.toString();
     }
 
-    public String generateAllArgsConstructor() {
+    public String generateAllArgsConstructor(String className) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbInnerConstructor = new StringBuilder();
 
-        sb.append("public " + className + "(");
+        sb.append("\tpublic " + className + "(");
         columnInfo.forEach((columnName, column) -> {
             sb.append(column.getJavaType() + " " + column.getColumnNameWithCamel() + ", ");
-            sbInnerConstructor.append("this." + column.getColumnNameWithCamel() + " = " + column.getColumnNameWithCamel() + ";\n");
+            sbInnerConstructor.append("\t\tthis." + column.getColumnNameWithCamel() + " = " + column.getColumnNameWithCamel() + ";\n");
         });
         sb.delete(sb.length() - 2, sb.length());
         sb.append(") {\n");
         sb.append(sbInnerConstructor);
-        sb.append("}");
+        sb.append("\t}");
         return sb.toString();
     }
 

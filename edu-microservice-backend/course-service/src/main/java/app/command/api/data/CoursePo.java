@@ -2,12 +2,6 @@ package app.command.api.data;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Date;
-import java.util.Date;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.math.BigDecimal;
 
 public class CoursePo implements Serializable {
@@ -43,7 +37,6 @@ public class CoursePo implements Serializable {
 	private String videoType;
 	private Boolean isPro;
 	private Boolean isCommingSoon;
-
 
 	public Date getLastCompletedAt() {
 		return lastCompletedAt;

@@ -1,10 +1,10 @@
-package app.command.api.model;
+package app.command.api.events;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.math.BigDecimal;
 
-public class CourseRequestModel implements Serializable {
+public class CourseUpdatedEvent implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Date lastCompletedAt;
@@ -38,7 +38,7 @@ public class CourseRequestModel implements Serializable {
 	private Boolean isPro;
 	private Boolean isCommingSoon;
 
-	public CourseRequestModel(Date lastCompletedAt, Boolean isPublished, Integer levelId, String icon, Integer studentsCount, String description, Date createdAt, String video, String title, Boolean isPreOrder, String content, String videoUrl, Date updatedAt, BigDecimal price, String id, String completedContent, Date publishedAt, String slug, String iconUrl, String image, String imageUrl, BigDecimal oldPrice, String certificateName, Boolean isSelling, Integer priority, Date deletedAt, BigDecimal preOrderPrice, String videoType, Boolean isPro, Boolean isCommingSoon) {
+	public CourseUpdatedEvent(Date lastCompletedAt, Boolean isPublished, Integer levelId, String icon, Integer studentsCount, String description, Date createdAt, String video, String title, Boolean isPreOrder, String content, String videoUrl, Date updatedAt, BigDecimal price, String id, String completedContent, Date publishedAt, String slug, String iconUrl, String image, String imageUrl, BigDecimal oldPrice, String certificateName, Boolean isSelling, Integer priority, Date deletedAt, BigDecimal preOrderPrice, String videoType, Boolean isPro, Boolean isCommingSoon) {
 		this.lastCompletedAt = lastCompletedAt;
 		this.isPublished = isPublished;
 		this.levelId = levelId;
@@ -251,10 +251,10 @@ public class CourseRequestModel implements Serializable {
 		this.isCommingSoon = isCommingSoon;
 	}
 
-	public static CourseRequestModelBuilder builder() {
-		return new CourseRequestModelBuilder();
+	public static CourseUpdatedEventBuilder builder() {
+		return new CourseUpdatedEventBuilder();
 	}
-	public static class CourseRequestModelBuilder {
+	public static class CourseUpdatedEventBuilder {
 
 		private Date lastCompletedAt;
 		private Boolean isPublished;
@@ -287,129 +287,129 @@ public class CourseRequestModel implements Serializable {
 		private Boolean isPro;
 		private Boolean isCommingSoon;
 
-		public CourseRequestModelBuilder lastCompletedAt(Date lastCompletedAt) {
+		public CourseUpdatedEventBuilder lastCompletedAt(Date lastCompletedAt) {
 			this.lastCompletedAt = lastCompletedAt;
 			return this;
 		}
-		public CourseRequestModelBuilder isPublished(Boolean isPublished) {
+		public CourseUpdatedEventBuilder isPublished(Boolean isPublished) {
 			this.isPublished = isPublished;
 			return this;
 		}
-		public CourseRequestModelBuilder levelId(Integer levelId) {
+		public CourseUpdatedEventBuilder levelId(Integer levelId) {
 			this.levelId = levelId;
 			return this;
 		}
-		public CourseRequestModelBuilder icon(String icon) {
+		public CourseUpdatedEventBuilder icon(String icon) {
 			this.icon = icon;
 			return this;
 		}
-		public CourseRequestModelBuilder studentsCount(Integer studentsCount) {
+		public CourseUpdatedEventBuilder studentsCount(Integer studentsCount) {
 			this.studentsCount = studentsCount;
 			return this;
 		}
-		public CourseRequestModelBuilder description(String description) {
+		public CourseUpdatedEventBuilder description(String description) {
 			this.description = description;
 			return this;
 		}
-		public CourseRequestModelBuilder createdAt(Date createdAt) {
+		public CourseUpdatedEventBuilder createdAt(Date createdAt) {
 			this.createdAt = createdAt;
 			return this;
 		}
-		public CourseRequestModelBuilder video(String video) {
+		public CourseUpdatedEventBuilder video(String video) {
 			this.video = video;
 			return this;
 		}
-		public CourseRequestModelBuilder title(String title) {
+		public CourseUpdatedEventBuilder title(String title) {
 			this.title = title;
 			return this;
 		}
-		public CourseRequestModelBuilder isPreOrder(Boolean isPreOrder) {
+		public CourseUpdatedEventBuilder isPreOrder(Boolean isPreOrder) {
 			this.isPreOrder = isPreOrder;
 			return this;
 		}
-		public CourseRequestModelBuilder content(String content) {
+		public CourseUpdatedEventBuilder content(String content) {
 			this.content = content;
 			return this;
 		}
-		public CourseRequestModelBuilder videoUrl(String videoUrl) {
+		public CourseUpdatedEventBuilder videoUrl(String videoUrl) {
 			this.videoUrl = videoUrl;
 			return this;
 		}
-		public CourseRequestModelBuilder updatedAt(Date updatedAt) {
+		public CourseUpdatedEventBuilder updatedAt(Date updatedAt) {
 			this.updatedAt = updatedAt;
 			return this;
 		}
-		public CourseRequestModelBuilder price(BigDecimal price) {
+		public CourseUpdatedEventBuilder price(BigDecimal price) {
 			this.price = price;
 			return this;
 		}
-		public CourseRequestModelBuilder id(String id) {
+		public CourseUpdatedEventBuilder id(String id) {
 			this.id = id;
 			return this;
 		}
-		public CourseRequestModelBuilder completedContent(String completedContent) {
+		public CourseUpdatedEventBuilder completedContent(String completedContent) {
 			this.completedContent = completedContent;
 			return this;
 		}
-		public CourseRequestModelBuilder publishedAt(Date publishedAt) {
+		public CourseUpdatedEventBuilder publishedAt(Date publishedAt) {
 			this.publishedAt = publishedAt;
 			return this;
 		}
-		public CourseRequestModelBuilder slug(String slug) {
+		public CourseUpdatedEventBuilder slug(String slug) {
 			this.slug = slug;
 			return this;
 		}
-		public CourseRequestModelBuilder iconUrl(String iconUrl) {
+		public CourseUpdatedEventBuilder iconUrl(String iconUrl) {
 			this.iconUrl = iconUrl;
 			return this;
 		}
-		public CourseRequestModelBuilder image(String image) {
+		public CourseUpdatedEventBuilder image(String image) {
 			this.image = image;
 			return this;
 		}
-		public CourseRequestModelBuilder imageUrl(String imageUrl) {
+		public CourseUpdatedEventBuilder imageUrl(String imageUrl) {
 			this.imageUrl = imageUrl;
 			return this;
 		}
-		public CourseRequestModelBuilder oldPrice(BigDecimal oldPrice) {
+		public CourseUpdatedEventBuilder oldPrice(BigDecimal oldPrice) {
 			this.oldPrice = oldPrice;
 			return this;
 		}
-		public CourseRequestModelBuilder certificateName(String certificateName) {
+		public CourseUpdatedEventBuilder certificateName(String certificateName) {
 			this.certificateName = certificateName;
 			return this;
 		}
-		public CourseRequestModelBuilder isSelling(Boolean isSelling) {
+		public CourseUpdatedEventBuilder isSelling(Boolean isSelling) {
 			this.isSelling = isSelling;
 			return this;
 		}
-		public CourseRequestModelBuilder priority(Integer priority) {
+		public CourseUpdatedEventBuilder priority(Integer priority) {
 			this.priority = priority;
 			return this;
 		}
-		public CourseRequestModelBuilder deletedAt(Date deletedAt) {
+		public CourseUpdatedEventBuilder deletedAt(Date deletedAt) {
 			this.deletedAt = deletedAt;
 			return this;
 		}
-		public CourseRequestModelBuilder preOrderPrice(BigDecimal preOrderPrice) {
+		public CourseUpdatedEventBuilder preOrderPrice(BigDecimal preOrderPrice) {
 			this.preOrderPrice = preOrderPrice;
 			return this;
 		}
-		public CourseRequestModelBuilder videoType(String videoType) {
+		public CourseUpdatedEventBuilder videoType(String videoType) {
 			this.videoType = videoType;
 			return this;
 		}
-		public CourseRequestModelBuilder isPro(Boolean isPro) {
+		public CourseUpdatedEventBuilder isPro(Boolean isPro) {
 			this.isPro = isPro;
 			return this;
 		}
-		public CourseRequestModelBuilder isCommingSoon(Boolean isCommingSoon) {
+		public CourseUpdatedEventBuilder isCommingSoon(Boolean isCommingSoon) {
 			this.isCommingSoon = isCommingSoon;
 			return this;
 		}
 
-		public CourseRequestModel build() {
-			return new CourseRequestModel(this.lastCompletedAt, this.isPublished, this.levelId, this.icon, this.studentsCount, this.description, this.createdAt, this.video, this.title, this.isPreOrder, this.content, this.videoUrl, this.updatedAt, this.price, this.id, this.completedContent, this.publishedAt, this.slug, this.iconUrl, this.image, this.imageUrl, this.oldPrice, this.certificateName, this.isSelling, this.priority, this.deletedAt, this.preOrderPrice, this.videoType, this.isPro, this.isCommingSoon);
+		public CourseUpdatedEvent build() {
+			return new CourseUpdatedEvent(this.lastCompletedAt, this.isPublished, this.levelId, this.icon, this.studentsCount, this.description, this.createdAt, this.video, this.title, this.isPreOrder, this.content, this.videoUrl, this.updatedAt, this.price, this.id, this.completedContent, this.publishedAt, this.slug, this.iconUrl, this.image, this.imageUrl, this.oldPrice, this.certificateName, this.isSelling, this.priority, this.deletedAt, this.preOrderPrice, this.videoType, this.isPro, this.isCommingSoon);
 		}
 
 	}

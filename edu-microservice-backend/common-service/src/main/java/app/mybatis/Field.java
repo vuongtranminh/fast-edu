@@ -169,8 +169,8 @@ public class Field {
 
     public String generateAccessorBuilder(String className) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\tpublic " + className + columnNameWithCamel + "(" + javaType + " " + columnNameWithCamel + ") {\n\t\tthis."
-                + columnNameWithCamel + " = " + columnNameWithCamel + ";\n\treturn this;\n}\n");
+        sb.append("\t\tpublic " + className + " " + columnNameWithCamel + "(" + javaType + " " + columnNameWithCamel + ") {\n\t\t\tthis."
+                + columnNameWithCamel + " = " + columnNameWithCamel + ";\n\t\t\treturn this;\n\t\t}\n");
         return sb.toString();
     }
 

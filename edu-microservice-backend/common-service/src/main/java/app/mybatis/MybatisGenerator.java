@@ -166,8 +166,14 @@ public class MybatisGenerator {
             writeFile(WORKING_DIRECTORY, tableInfo.getClassName() + "Dao.java", tableInfo.generateDao(PACKAGE));
             // wirteMapper.xml
             writeFile(WORKING_MAPPER_XML, tableInfo.getClassName() + "Mapper.xml", tableInfo.generateMapper(PACKAGE));
-            // wirteRequestModel.xml
+            // wirteRequestModel
             writeFile(DIRECTORY_MODEL, tableInfo.getClassName() + "RequestModel.java", tableInfo.generateRequestModel(PACKAGE_MODEL));
+            // writeCreatedEvent
+            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "CreatedEvent.java", tableInfo.generateCreatedEvent(PACKAGE_EVENTS));
+            // writeUpdatedEvent
+            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "UpdatedEvent.java", tableInfo.generateUpdatedEvent(PACKAGE_EVENTS));
+            // writeDeletedEvent
+            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "DeletedEvent.java", tableInfo.generateDeletedEvent(PACKAGE_EVENTS));
 
             tablesInfo.put(tableName, tableInfo);
         }
