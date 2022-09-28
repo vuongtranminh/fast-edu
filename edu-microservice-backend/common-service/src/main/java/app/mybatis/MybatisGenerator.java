@@ -174,6 +174,12 @@ public class MybatisGenerator {
             writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "UpdatedEvent.java", tableInfo.generateUpdatedEvent(PACKAGE_EVENTS));
             // writeDeletedEvent
             writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "DeletedEvent.java", tableInfo.generateDeletedEvent(PACKAGE_EVENTS));
+            // writeCreateCommand
+            writeFile(DIRECTORY_COMMANDS, "Create" + tableInfo.getClassName() + "Command.java", tableInfo.generateCreateCommand(PACKAGE_COMMANDS));
+            // writeUpdateCommand
+            writeFile(DIRECTORY_COMMANDS, "Update" + tableInfo.getClassName() + "Command.java", tableInfo.generateUpdateCommand(PACKAGE_COMMANDS));
+            // writeDeleteCommand
+            writeFile(DIRECTORY_COMMANDS, "Delete" + tableInfo.getClassName() + "Command.java", tableInfo.generateDeleteCommand(PACKAGE_COMMANDS));
 
             tablesInfo.put(tableName, tableInfo);
         }

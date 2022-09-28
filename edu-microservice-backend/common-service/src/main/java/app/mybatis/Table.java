@@ -274,7 +274,7 @@ public class Table {
         return sb.toString();
     }
 
-    public String generateClass(String pkg, String className, boolean isGenerateAllArgsConstructor, boolean isGenerateBuilder) {
+    public String generateClass(String pkg, String className, boolean isGenerateAllArgsConstructor, boolean isGenerateBuilder, boolean isGenerateCommand) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbImport = new StringBuilder();
         StringBuilder sbInstance = new StringBuilder();
@@ -282,19 +282,32 @@ public class Table {
 
         sbImport.append("import java.io.Serializable;\n");
 
+        if(isGenerateCommand) {
+            sbImport.append("import org.axonframework.modelling.command.TargetAggregateIdentifier;\n");
+        }
+
         columnInfo.forEach((columnName, column) -> {
             if(sbImport.indexOf(column.generateImport()) == -1) {
                 sbImport.append(column.generateImport());
             }
-            sbInstance.append(column.generateInstance());
-            sbAccessors.append(column.generateAccessor());
+            if(columnName.equals(primaryKeyColumnName)) {
+                if(isGenerateCommand) {
+                    sbInstance.insert(0, "\t@TargetAggregateIdentifier\n" + column.generateInstance());
+                } else {
+                    sbInstance.insert(0, column.generateInstance());
+                }
+                sbAccessors.insert(0, column.generateAccessor());
+            } else {
+                sbInstance.append(column.generateInstance());
+                sbAccessors.append(column.generateAccessor());
+            }
         });
 
         sb.append("package " + pkg + ";\n\n");
         sb.append(sbImport);
         sb.append("\n");
         sb.append("public class " + className + " implements Serializable {\n\n");
-        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
+        sb.append("\tprivate static final long serialVersionUID = 1L;\n\n");
         sb.append(sbInstance);
         sb.append("\n");
         if(isGenerateAllArgsConstructor || isGenerateBuilder) {
@@ -315,34 +328,56 @@ public class Table {
     }
 
     public String generatePo(String pkg) {
-        return generateClass(pkg, className + "Po", false, false);
+        return generateClass(pkg, className + "Po", false, false, false);
     }
 
     public String generateRequestModel(String pkg) {
-        return generateClass(pkg, className + "RequestModel", true, true);
+        return generateClass(pkg, className + "RequestModel", true, true, false);
     }
 
     public String generateCreatedEvent(String pkg) {
-        return generateClass(pkg, className + "CreatedEvent", true, true);
+        return generateClass(pkg, className + "CreatedEvent", true, true, false);
     }
 
     public String generateUpdatedEvent(String pkg) {
-        return generateClass(pkg, className + "UpdatedEvent", true, true);
+        return generateClass(pkg, className + "UpdatedEvent", true, true, false);
     }
 
     public String generateDeletedEvent(String pkg) {
+        return generateDeleteClass(pkg, className + "DeletedEvent", false);
+    }
+
+    public String generateCreateCommand(String pkg) {
+        return generateClass(pkg, "Create" + className + "Command", true, true, true);
+    }
+
+    public String generateUpdateCommand(String pkg) {
+        return generateClass(pkg, "Update" + className + "Command", true, true, true);
+    }
+
+    public String generateDeleteCommand(String pkg) {
+        return generateDeleteClass(pkg, "Delete" + className + "Command", true);
+    }
+
+    public String generateDeleteClass(String pkg, String className, boolean isGenerateCommand) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbImport = new StringBuilder();
         StringBuilder sbInstance = new StringBuilder();
         StringBuilder sbAccessors  = new StringBuilder();
 
         sbImport.append("import java.io.Serializable;\n");
+        if(isGenerateCommand) {
+            sbImport.append("import org.axonframework.modelling.command.TargetAggregateIdentifier;\n");
+        }
 
         sb.append("package " + pkg + ";\n\n");
         sb.append(sbImport.append(primaryKeyInfo.generateImport()));
         sb.append("\n");
-        sb.append("public class " + className + "DeletedEvent implements Serializable {\n\n");
-        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
+        sb.append("public class " + className + " implements Serializable {\n\n");
+        sb.append("\tprivate static final long serialVersionUID = 1L;\n\n");
+        if(isGenerateCommand) {
+            sbInstance.append("\t@TargetAggregateIdentifier\n");
+        }
         sb.append(sbInstance.append(primaryKeyInfo.generateInstance()));
         sb.append("\n");
         sb.append(sbAccessors.append(primaryKeyInfo.generateAccessor()));

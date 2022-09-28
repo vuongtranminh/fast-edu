@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 public class CoursePo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private String id;
 	private Date lastCompletedAt;
 	private Boolean isPublished;
 	private Integer levelId;
@@ -21,7 +22,6 @@ public class CoursePo implements Serializable {
 	private String videoUrl;
 	private Date updatedAt;
 	private BigDecimal price;
-	private String id;
 	private String completedContent;
 	private Date publishedAt;
 	private String slug;
@@ -38,6 +38,12 @@ public class CoursePo implements Serializable {
 	private Boolean isPro;
 	private Boolean isCommingSoon;
 
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
+	}
 	public Date getLastCompletedAt() {
 		return lastCompletedAt;
 	}
@@ -121,12 +127,6 @@ public class CoursePo implements Serializable {
 	}
 	public void setPrice(BigDecimal price) {
 		this.price = price;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id == null ? null : id.trim();
 	}
 	public String getCompletedContent() {
 		return completedContent;
