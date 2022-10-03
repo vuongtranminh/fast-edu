@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public class CreateCourseCommand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@TargetAggregateIdentifier
 	private String id;
 	private Date lastCompletedAt;

@@ -344,7 +344,7 @@ public class Table {
     }
 
     public String generateDeletedEvent(String pkg) {
-        return generateDeleteClass(pkg, className + "DeletedEvent", false);
+        return generateClassWithId(pkg, className + "DeletedEvent", false);
     }
 
     public String generateCreateCommand(String pkg) {
@@ -356,10 +356,27 @@ public class Table {
     }
 
     public String generateDeleteCommand(String pkg) {
-        return generateDeleteClass(pkg, "Delete" + className + "Command", true);
+        return generateClassWithId(pkg, "Delete" + className + "Command", true);
     }
 
-    public String generateDeleteClass(String pkg, String className, boolean isGenerateCommand) {
+    public String generateResponseModel(String pkg) {
+        return generateClass(pkg, className + "ResponseModel", true, true, false);
+    }
+
+    public String generateGetAllQuery(String pkg) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("package " + pkg + ";\n\n");
+        sb.append("public class Get" + className + "sQuery {\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public String generateGetQuery(String pkg) {
+        return generateClassWithId(pkg, "Get" + className + "Query", false);
+    }
+
+    public String generateClassWithId(String pkg, String className, boolean isGenerateCommand) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbImport = new StringBuilder();
         StringBuilder sbInstance = new StringBuilder();

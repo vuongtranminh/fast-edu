@@ -15,7 +15,7 @@ public class MybatisConfig {
     public static final String SERVICE = "course-service";
 
 
-    public static String createDirectory(String pkg) {
+    public static String createDirectory(String directory, String pkg) {
         StringBuilder sb = new StringBuilder();
         return sb.append(WORKING)
                 .append(FILE_SEPARATOR)
@@ -29,16 +29,14 @@ public class MybatisConfig {
                 .append(FILE_SEPARATOR)
                 .append("app")
                 .append(FILE_SEPARATOR)
-                .append("command")
-                .append(FILE_SEPARATOR)
-                .append("api")
+                .append(directory)
                 .append(FILE_SEPARATOR)
                 .append(pkg)
                 .toString();
     }
 
-    public static String createPackageImport(String pkg) {
-        return "app.command.api." + pkg;
+    public static String createPackageImport(String directory, String pkg) {
+        return "app." + directory + pkg;
     }
 
     public static final String WORKING_FOLDER = new StringBuilder(FILE_SEPARATOR)
@@ -73,19 +71,29 @@ public class MybatisConfig {
             .append("mapper")
             .toString();
 
-    public static final String DIRECTORY_DATA = createDirectory("data");
-    public static final String DIRECTORY_MODEL = createDirectory("model");
-    public static final String DIRECTORY_EVENTS = createDirectory("events");
-    public static final String DIRECTORY_CONTROLLER = createDirectory("controller");
-    public static final String DIRECTORY_COMMANDS = createDirectory("commands");
-    public static final String DIRECTORY_AGGREGATE = createDirectory("aggregate");
+    public static final String DIRECTORY_COMMAND = "command" + FILE_SEPARATOR + "api";
+    public static final String DIRECTORY_COMMAND_DATA = createDirectory(DIRECTORY_COMMAND, "data");
+    public static final String DIRECTORY_COMMAND_MODEL = createDirectory(DIRECTORY_COMMAND, "model");
+    public static final String DIRECTORY_COMMAND_EVENTS = createDirectory(DIRECTORY_COMMAND, "events");
+    public static final String DIRECTORY_COMMAND_CONTROLLER = createDirectory(DIRECTORY_COMMAND, "controller");
+    public static final String DIRECTORY_COMMAND_COMMANDS = createDirectory(DIRECTORY_COMMAND, "commands");
+    public static final String DIRECTORY_COMMAND_AGGREGATE = createDirectory(DIRECTORY_COMMAND, "aggregate");
 
-    public static final String PACKAGE = createPackageImport("data");
-    public static final String PACKAGE_DATA = createPackageImport("data");
-    public static final String PACKAGE_MODEL = createPackageImport("model");
-    public static final String PACKAGE_EVENTS = createPackageImport("events");
-    public static final String PACKAGE_CONTROLLER = createPackageImport("controller");
-    public static final String PACKAGE_COMMANDS = createPackageImport("commands");
-    public static final String PACKAGE_AGGREGATE = createPackageImport("aggregate");
+    public static final String PACKAGE_COMMAND = "command.api.";
+    public static final String PACKAGE = createPackageImport(PACKAGE_COMMAND, "data");
+    public static final String PACKAGE_COMMAND_DATA = createPackageImport(PACKAGE_COMMAND, "data");
+    public static final String PACKAGE_COMMAND_MODEL = createPackageImport(PACKAGE_COMMAND, "model");
+    public static final String PACKAGE_COMMAND_EVENTS = createPackageImport(PACKAGE_COMMAND, "events");
+    public static final String PACKAGE_COMMAND_CONTROLLER = createPackageImport(PACKAGE_COMMAND, "controller");
+    public static final String PACKAGE_COMMAND_COMMANDS = createPackageImport(PACKAGE_COMMAND, "commands");
+    public static final String PACKAGE_COMMAND_AGGREGATE = createPackageImport(PACKAGE_COMMAND, "aggregate");
+
+    public static final String DIRECTORY_QUERY = "query" + FILE_SEPARATOR + "api";
+    public static final String DIRECTORY_QUERY_MODEL = createDirectory(DIRECTORY_QUERY, "model");
+    public static final String DIRECTORY_QUERY_QUERIES = createDirectory(DIRECTORY_QUERY, "queries");
+
+    public static final String PACKAGE_QUERY = "query.api.";
+    public static final String PACKAGE_QUERY_MODEL = createPackageImport(PACKAGE_QUERY, "model");
+    public static final String PACKAGE_QUERY_QUERIES = createPackageImport(PACKAGE_QUERY, "queries");
 
 }

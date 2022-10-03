@@ -167,19 +167,27 @@ public class MybatisGenerator {
             // wirteMapper.xml
             writeFile(WORKING_MAPPER_XML, tableInfo.getClassName() + "Mapper.xml", tableInfo.generateMapper(PACKAGE));
             // wirteRequestModel
-            writeFile(DIRECTORY_MODEL, tableInfo.getClassName() + "RequestModel.java", tableInfo.generateRequestModel(PACKAGE_MODEL));
+            writeFile(DIRECTORY_COMMAND_MODEL, tableInfo.getClassName() + "RequestModel.java", tableInfo.generateRequestModel(PACKAGE_COMMAND_MODEL));
             // writeCreatedEvent
-            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "CreatedEvent.java", tableInfo.generateCreatedEvent(PACKAGE_EVENTS));
+            writeFile(DIRECTORY_COMMAND_EVENTS, tableInfo.getClassName() + "CreatedEvent.java", tableInfo.generateCreatedEvent(PACKAGE_COMMAND_EVENTS));
             // writeUpdatedEvent
-            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "UpdatedEvent.java", tableInfo.generateUpdatedEvent(PACKAGE_EVENTS));
+            writeFile(DIRECTORY_COMMAND_EVENTS, tableInfo.getClassName() + "UpdatedEvent.java", tableInfo.generateUpdatedEvent(PACKAGE_COMMAND_EVENTS));
             // writeDeletedEvent
-            writeFile(DIRECTORY_EVENTS, tableInfo.getClassName() + "DeletedEvent.java", tableInfo.generateDeletedEvent(PACKAGE_EVENTS));
+            writeFile(DIRECTORY_COMMAND_EVENTS, tableInfo.getClassName() + "DeletedEvent.java", tableInfo.generateDeletedEvent(PACKAGE_COMMAND_EVENTS));
             // writeCreateCommand
-            writeFile(DIRECTORY_COMMANDS, "Create" + tableInfo.getClassName() + "Command.java", tableInfo.generateCreateCommand(PACKAGE_COMMANDS));
+            writeFile(DIRECTORY_COMMAND_COMMANDS, "Create" + tableInfo.getClassName() + "Command.java", tableInfo.generateCreateCommand(PACKAGE_COMMAND_COMMANDS));
             // writeUpdateCommand
-            writeFile(DIRECTORY_COMMANDS, "Update" + tableInfo.getClassName() + "Command.java", tableInfo.generateUpdateCommand(PACKAGE_COMMANDS));
+            writeFile(DIRECTORY_COMMAND_COMMANDS, "Update" + tableInfo.getClassName() + "Command.java", tableInfo.generateUpdateCommand(PACKAGE_COMMAND_COMMANDS));
             // writeDeleteCommand
-            writeFile(DIRECTORY_COMMANDS, "Delete" + tableInfo.getClassName() + "Command.java", tableInfo.generateDeleteCommand(PACKAGE_COMMANDS));
+            writeFile(DIRECTORY_COMMAND_COMMANDS, "Delete" + tableInfo.getClassName() + "Command.java", tableInfo.generateDeleteCommand(PACKAGE_COMMAND_COMMANDS));
+
+
+            // writeGetAll
+            writeFile(DIRECTORY_QUERY_QUERIES, "Get" + tableInfo.getClassName() + "sQuery.java", tableInfo.generateGetAllQuery(  PACKAGE_QUERY_QUERIES));
+            // writeGet
+            writeFile(DIRECTORY_QUERY_QUERIES, "Get" + tableInfo.getClassName() + "Query.java", tableInfo.generateGetQuery(PACKAGE_QUERY_QUERIES));
+            // writeResponseModel
+            writeFile(DIRECTORY_QUERY_MODEL, tableInfo.getClassName() + "ResponseModel.java", tableInfo.generateResponseModel(PACKAGE_QUERY_MODEL));
 
             tablesInfo.put(tableName, tableInfo);
         }
