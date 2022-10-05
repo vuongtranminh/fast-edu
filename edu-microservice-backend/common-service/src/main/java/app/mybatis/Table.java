@@ -268,7 +268,7 @@ public class Table {
         sb.append("import org.apache.ibatis.annotations.Mapper;\n");
         sb.append("import ").append(packaje).append(".").append(className).append("Po;\n\n");
         sb.append("@Mapper\n");
-        sb.append("public interface ").append(className).append("Dao extends BaseDao<").append(className).append("Po> {\n\n");
+        sb.append("public interface ").append(className).append("Dao extends BaseDao<").append(className).append("Po, ").append(primaryKeyInfo.getJavaType()).append("> {\n\n");
         sb.append("}");
 
         return sb.toString();
@@ -310,6 +310,8 @@ public class Table {
         sb.append("\tprivate static final long serialVersionUID = 1L;\n\n");
         sb.append(sbInstance);
         sb.append("\n");
+        sb.append("\tpublic " + className + "() { }\n");
+        sb.append("\n");
         if(isGenerateAllArgsConstructor || isGenerateBuilder) {
             String sbConstructor = generateAllArgsConstructor(className);
             sb.append(sbConstructor);
@@ -328,7 +330,7 @@ public class Table {
     }
 
     public String generatePo(String pkg) {
-        return generateClass(pkg, className + "Po", false, false, false);
+        return generateClass(pkg, className + "Po", true, true, false);
     }
 
     public String generateRequestModel(String pkg) {

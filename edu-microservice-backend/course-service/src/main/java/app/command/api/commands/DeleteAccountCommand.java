@@ -3,18 +3,18 @@ package app.command.api.commands;
 import java.io.Serializable;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class DeleteCourseCommand implements Serializable {
+public class DeleteAccountCommand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@TargetAggregateIdentifier
-	private String id;
+	private Integer id;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id == null ? null : id.trim();
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

@@ -105,11 +105,12 @@ public class Helper {
         sb.append("package ").append(packaje).append(";\n\n");
         sb.append("import java.util.List;\n");
         sb.append("import ").append(packaje).append(".Pagination;\n\n");
-        sb.append("public interface BaseDao<T> {\n\n");
+        sb.append("public interface BaseDao<T, ID> {\n\n");
         sb.append("\tList<T> findAll();\n");
-        sb.append("\tT getById(Long id);\n");
+        sb.append("\tT getById(ID id);\n");
         sb.append("\tint save(T t);\n");
         sb.append("\tint updateById(T t);\n");
+        sb.append("\tint deleteById(ID id);\n");
         sb.append("\tList<T> pagination(Pagination pagination);\n");
         sb.append("\tLong countAll();\n");
         sb.append("\n}");
