@@ -8,6 +8,12 @@ public class AccountDeletedEvent implements Serializable {
 
 	private Integer id;
 
+	public AccountDeletedEvent() { }
+
+	public AccountDeletedEvent(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}

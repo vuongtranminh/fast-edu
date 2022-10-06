@@ -8,6 +8,12 @@ public class GetAccountQuery implements Serializable {
 
 	private Integer id;
 
+	public GetAccountQuery() { }
+
+	public GetAccountQuery(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}

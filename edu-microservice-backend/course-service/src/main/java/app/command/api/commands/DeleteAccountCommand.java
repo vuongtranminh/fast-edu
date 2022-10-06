@@ -10,6 +10,12 @@ public class DeleteAccountCommand implements Serializable {
 	@TargetAggregateIdentifier
 	private Integer id;
 
+	public DeleteAccountCommand() { }
+
+	public DeleteAccountCommand(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}

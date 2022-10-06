@@ -34,4 +34,5 @@ public class AccountEventsHandlerImpl implements AccountEventsHandler {
     public void on(AccountDeletedEvent event) {
         accountDao.deleteById(event.getId());
     }
+
 }

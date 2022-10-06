@@ -399,6 +399,12 @@ public class Table {
         }
         sb.append(sbInstance.append(primaryKeyInfo.generateInstance()));
         sb.append("\n");
+        sb.append("\tpublic " + className + "() { }\n");
+        sb.append("\n");
+        sb.append("\tpublic " + className + "(").append(primaryKeyInfo.getJavaType() + " ").append(primaryKeyInfo.getColumnNameWithCamel()).append(") {\n");
+        sb.append("\t\tthis." + primaryKeyInfo.getColumnNameWithCamel() + " = " + primaryKeyInfo.getColumnNameWithCamel() + ";\n");
+        sb.append("\t}\n");
+        sb.append("\n");
         sb.append(sbAccessors.append(primaryKeyInfo.generateAccessor()));
         sb.append("\n");
         sb.append("}");
