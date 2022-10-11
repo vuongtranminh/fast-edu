@@ -1,7 +1,7 @@
 package app.command.api.events.impl;
 
-import app.command.api.data.AccountDao;
-import app.command.api.data.AccountPo;
+import app.command.api.data.dao.AccountMapper;
+import app.command.api.data.entity.AccountPo;
 import app.command.api.events.AccountCreatedEvent;
 import app.command.api.events.AccountDeletedEvent;
 import app.command.api.events.AccountEventsHandler;
@@ -14,25 +14,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AccountEventsHandlerImpl implements AccountEventsHandler {
 
     @Autowired
-    private AccountDao accountDao;
+    private AccountMapper accountMapper;
 
     @Override
     public void on(AccountCreatedEvent event) {
         AccountPo accountPo = new AccountPo();
         BeanUtils.copyProperties(event, accountPo);
-        accountDao.save(accountPo);
+        accountMapper.save(accountPo);
     }
 
     @Override
     public void on(AccountUpdatedEvent event) {
-        AccountPo accountPo = accountDao.getById(event.getId());
+        AccountPo accountPo = accountMapper.getById(event.getId());
         BeanUtils.copyProperties(event, accountPo);
-        accountDao.updateById(accountPo);
+        accountMapper.updateById(accountPo);
     }
 
     @Override
     public void on(AccountDeletedEvent event) {
-        accountDao.deleteById(event.getId());
+        accountMapper.deleteById(event.getId());
     }
 
 }

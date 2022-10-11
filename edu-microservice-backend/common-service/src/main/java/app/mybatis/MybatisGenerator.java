@@ -105,7 +105,7 @@ public class MybatisGenerator {
     public static void generateTable(DatabaseMetaData dbmd) throws SQLException {
 
         // writeBaseDao
-        writeFile(WORKING_DIRECTORY, "BaseDao.java", generateBaseDao(PACKAGE));
+        writeFile(DIRECTORY_COMMAND_DATA_DAO, "BaseMapper.java", generateBaseMapper(PACKAGE_COMMAND_DATA_DAO));
 
         // writePagination
         writeFile(WORKING_DIRECTORY, "Pagination.java", generatePagination(PACKAGE));
@@ -161,11 +161,11 @@ public class MybatisGenerator {
 //            System.out.println(tableInfo.generateMapper(PACKAGE));
 
             // writePo
-            writeFile(WORKING_DIRECTORY, tableInfo.getClassName() + "Po.java", tableInfo.generatePo(PACKAGE));
+            writeFile(DIRECTORY_COMMAND_DATA_ENTITY, tableInfo.getClassName() + "Po.java", tableInfo.generatePo(PACKAGE_COMMAND_DATA_ENTITY));
             // writeDao
-            writeFile(WORKING_DIRECTORY, tableInfo.getClassName() + "Dao.java", tableInfo.generateDao(PACKAGE));
+            writeFile(DIRECTORY_COMMAND_DATA_DAO, tableInfo.getClassName() + "Mapper.java", tableInfo.generateMapper(PACKAGE_COMMAND_DATA_DAO));
             // wirteMapper.xml
-            writeFile(WORKING_MAPPER_XML, tableInfo.getClassName() + "Mapper.xml", tableInfo.generateMapper(PACKAGE));
+            writeFile(WORKING_MAPPER_XML, tableInfo.getClassName() + "Mapper.xml", tableInfo.generateMapperXML(PACKAGE_COMMAND_DATA_DAO));
             // wirteRequestModel
             writeFile(DIRECTORY_COMMAND_MODEL, tableInfo.getClassName() + "RequestModel.java", tableInfo.generateRequestModel(PACKAGE_COMMAND_MODEL));
             // writeCreatedEvent

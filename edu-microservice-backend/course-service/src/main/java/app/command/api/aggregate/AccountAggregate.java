@@ -26,7 +26,7 @@ public class AccountAggregate {
 
     @CommandHandler
     public AccountAggregate(CreateAccountCommand command) {
-
+        //You can perform all the validations
         AccountCreatedEvent event
                 = new AccountCreatedEvent();
         BeanUtils.copyProperties(command,

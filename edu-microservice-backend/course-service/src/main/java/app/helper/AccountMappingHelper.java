@@ -1,6 +1,6 @@
 package app.helper;
 
-import app.command.api.data.AccountPo;
+import app.command.api.data.entity.AccountPo;
 import app.command.api.events.AccountUpdatedEvent;
 
 public interface AccountMappingHelper {

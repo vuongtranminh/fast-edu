@@ -4,6 +4,7 @@ import java.util.Map;
 
 import static app.mybatis.Helper.className;
 import static app.mybatis.MySQLDataType.LONGTEXT;
+import static app.mybatis.MybatisConfig.*;
 
 public class Table {
 
@@ -78,40 +79,7 @@ public class Table {
         return sb.toString();
     }
 
-//    public String generatePo(String packaje) {
-//        StringBuilder sb = new StringBuilder();
-//        StringBuilder sbImport = new StringBuilder();
-//        StringBuilder sbInstance = new StringBuilder();
-//        StringBuilder sbConstructor = new StringBuilder();
-//        StringBuilder sbAccessors  = new StringBuilder();
-//
-//        sbImport.append("import java.io.Serializable;\n");
-//
-//        columnInfo.forEach((columnName, column) -> {
-//            if(sbImport.indexOf(column.generateImport()) == -1) {
-//                sbImport.append(column.generateImport());
-//            }
-//            sbInstance.append(column.generateInstance());
-//            sbAccessors.append(column.generateAccessor());
-//        });
-//
-//        sb.append("package " + packaje + ";\n\n");
-//        sb.append(sbImport);
-//        sb.append("\n");
-//        sb.append("public class " + className + "Po implements Serializable {\n\n");
-//        sb.append("\tprivate static final long serialVersionUID = 1L;\n");
-//        sb.append(sbInstance);
-//        sb.append("\n");
-//        sb.append(sbConstructor);
-//        sb.append("\n");
-//        sb.append(sbAccessors);
-//        sb.append("\n");
-//        sb.append("}");
-//
-//        return sb.toString();
-//    }
-
-    public String generateMapper(String packaje) {
+    public String generateMapperXML(String packaje) {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbBaseResultMap = new StringBuilder();
         StringBuilder sbResultMapWithBLOBs = new StringBuilder();
@@ -137,14 +105,14 @@ public class Table {
 
         sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         sb.append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n");
-        sb.append("<mapper namespace=\"" + packaje + "." + className + "Mapper\">\n");
+        sb.append("<mapper namespace=\"" + PACKAGE_COMMAND_DATA_DAO + "." + className + "Mapper\">\n");
 
-        sb.append("\t<resultMap id=\"BaseResultMap\" type=\"" + packaje + "." + className + "Po\">\n");
+        sb.append("\t<resultMap id=\"BaseResultMap\" type=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
         sb.append(sbBaseResultMap);
         sb.append("\t</resultMap>\n");
 
         if(isBlob) {
-            sb.append("\t<resultMap extends=\"BaseResultMap\" id=\"ResultMapWithBLOBs\" type=\"" + packaje + "." + className + "Po\">\n");
+            sb.append("\t<resultMap extends=\"BaseResultMap\" id=\"ResultMapWithBLOBs\" type=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
             sb.append(sbResultMapWithBLOBs);
             sb.append("\t</resultMap>\n");
         }
@@ -218,13 +186,13 @@ public class Table {
         }
 
         // save
-        sb.append("\t<insert id=\"save\" parameterType=\"" + packaje + "." + className + "Po\">\n");
+        sb.append("\t<insert id=\"save\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
         sb.append("\t\tinsert into ").append(tableName).append(" (<include refid=\"Base_Column_List\" />, <include refid=\"Blob_Column_List\" />) \n\t\tvalues (")
                 .append(columnList).append(")\n");
         sb.append("\t</insert>\n");
 
         // updateById
-        sb.append("\t<update id=\"updateById\" parameterType=\"" + packaje + "." + className + "Po\">\n");
+        sb.append("\t<update id=\"updateById\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
         sb.append("\t\tupdate ").append(tableName).append("\n\t\t\t<set>\n").append(columnListUpdate).append("\n\t\t\t</set> \n")
                 .append("\t\twhere " ).append(primaryKeyColumnName).append(" = ").append(primaryKeyInfo.generateColumnType())
                 .append("\n").append("\t</update>\n");
@@ -241,13 +209,13 @@ public class Table {
 
         if(isBlob) {
             // pagination
-            sb.append("\t<select id=\"pagination\" parameterType=\"").append(packaje).append(".Pagination\" resultMap=\"ResultMapWithBLOBs\">\n")
+            sb.append("\t<select id=\"pagination\" parameterType=\"").append(PACKAGE_COMMAND_DATA).append(".Pagination\" resultMap=\"ResultMapWithBLOBs\">\n")
                     .append("\t\tselect <include refid=\"Base_Column_List\" />, <include refid=\"Blob_Column_List\" /> from ")
                     .append(tableName).append(" \n").append("\t\torder by id desc \n").append("\t\tlimit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}\n")
                     .append("\t</select>\n");
         } else {
             // pagination
-            sb.append("\t<select id=\"pagination\" parameterType=\"").append(packaje).append(".Pagination\" resultMap=\"BaseResultMap\">\n")
+            sb.append("\t<select id=\"pagination\" parameterType=\"").append(PACKAGE_COMMAND_DATA).append(".Pagination\" resultMap=\"BaseResultMap\">\n")
                     .append("\t\tselect <include refid=\"Base_Column_List\" /> from ")
                     .append(tableName).append(" \n").append("\t\torder by id desc \n").append("\t\tlimit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}\n")
                     .append("\t</select>\n");
@@ -260,15 +228,14 @@ public class Table {
         return sb.toString();
     }
 
-    public String generateDao(String packaje) {
+    public String generateMapper(String packaje) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("package ").append(packaje).append(";\n\n");
-        sb.append("import java.util.List;\n");
         sb.append("import org.apache.ibatis.annotations.Mapper;\n");
-        sb.append("import ").append(packaje).append(".").append(className).append("Po;\n\n");
+        sb.append("import ").append(PACKAGE_COMMAND_DATA_ENTITY).append(".").append(className).append("Po;\n\n");
         sb.append("@Mapper\n");
-        sb.append("public interface ").append(className).append("Dao extends BaseDao<").append(className).append("Po, ").append(primaryKeyInfo.getJavaType()).append("> {\n\n");
+        sb.append("public interface ").append(className).append("Mapper extends BaseMapper<").append(className).append("Po, ").append(primaryKeyInfo.getJavaType()).append("> {\n\n");
         sb.append("}");
 
         return sb.toString();

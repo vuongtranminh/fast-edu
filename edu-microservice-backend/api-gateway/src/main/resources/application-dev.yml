@@ -14,3 +14,6 @@ management:
 logging:
   file:
     name: src/main/resources/script/prod_log.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true

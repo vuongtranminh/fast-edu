@@ -1,4 +1,4 @@
-package app.command.api.data;
+package app.command.api.data.entity;
 
 import java.io.Serializable;
 

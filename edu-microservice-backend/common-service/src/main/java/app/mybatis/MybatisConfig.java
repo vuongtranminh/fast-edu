@@ -72,7 +72,8 @@ public class MybatisConfig {
             .toString();
 
     public static final String DIRECTORY_COMMAND = "command" + FILE_SEPARATOR + "api";
-    public static final String DIRECTORY_COMMAND_DATA = createDirectory(DIRECTORY_COMMAND, "data");
+    public static final String DIRECTORY_COMMAND_DATA_ENTITY = createDirectory(DIRECTORY_COMMAND, "data" + FILE_SEPARATOR + "entity");
+    public static final String DIRECTORY_COMMAND_DATA_DAO = createDirectory(DIRECTORY_COMMAND, "data" + FILE_SEPARATOR + "dao");
     public static final String DIRECTORY_COMMAND_MODEL = createDirectory(DIRECTORY_COMMAND, "model");
     public static final String DIRECTORY_COMMAND_EVENTS = createDirectory(DIRECTORY_COMMAND, "events");
     public static final String DIRECTORY_COMMAND_CONTROLLER = createDirectory(DIRECTORY_COMMAND, "controller");
@@ -82,6 +83,8 @@ public class MybatisConfig {
     public static final String PACKAGE_COMMAND = "command.api.";
     public static final String PACKAGE = createPackageImport(PACKAGE_COMMAND, "data");
     public static final String PACKAGE_COMMAND_DATA = createPackageImport(PACKAGE_COMMAND, "data");
+    public static final String PACKAGE_COMMAND_DATA_ENTITY = createPackageImport(PACKAGE_COMMAND, "data.entity");
+    public static final String PACKAGE_COMMAND_DATA_DAO = createPackageImport(PACKAGE_COMMAND, "data.dao");
     public static final String PACKAGE_COMMAND_MODEL = createPackageImport(PACKAGE_COMMAND, "model");
     public static final String PACKAGE_COMMAND_EVENTS = createPackageImport(PACKAGE_COMMAND, "events");
     public static final String PACKAGE_COMMAND_CONTROLLER = createPackageImport(PACKAGE_COMMAND, "controller");

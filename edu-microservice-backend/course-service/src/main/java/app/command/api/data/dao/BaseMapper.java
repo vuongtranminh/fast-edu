@@ -1,9 +1,9 @@
-package app.command.api.data;
+package app.command.api.data.dao;
 
 import java.util.List;
 import app.command.api.data.Pagination;
 
-public interface BaseDao<T, ID> {
+public interface BaseMapper<T, ID> {
 
 	List<T> findAll();
 	T getById(ID id);

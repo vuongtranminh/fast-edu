@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 
 import static app.mybatis.MySQLDataType.*;
 import static app.mybatis.MybatisConfig.FILE_SEPARATOR;
+import static app.mybatis.MybatisConfig.PACKAGE_COMMAND_DATA;
 
 public class Helper {
     public static String snakeToCamel(String str) {
@@ -40,6 +41,17 @@ public class Helper {
         return str;
     }
 
+    public static String convertDatatypeName(String datatypeName) {
+        switch (datatypeName) {
+            case "LONGTEXT":
+                return "LONGVARCHAR";
+            case "INT":
+                return "INTEGER";
+            default:
+                return datatypeName;
+        }
+    }
+
     public static JavaType convertJavaType(String datatype) {
         JavaType javaType = null;
         switch (datatype) {
@@ -69,12 +81,10 @@ public class Helper {
                 javaType = new JavaType("Date", "java.util.Date");
                 break;
             case CHAR:
-                javaType = new JavaType("char", "null");
+                javaType = new JavaType("char", null);
                 break;
             default:
-                System.out.println("note");
-                System.out.println(datatype);
-//                throw new RuntimeException();
+                throw new RuntimeException();
         }
         return javaType;
     }
@@ -99,13 +109,13 @@ public class Helper {
         return sb.toString();
     }
 
-    public static String generateBaseDao(String packaje) {
+    public static String generateBaseMapper(String packaje) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("package ").append(packaje).append(";\n\n");
         sb.append("import java.util.List;\n");
-        sb.append("import ").append(packaje).append(".Pagination;\n\n");
-        sb.append("public interface BaseDao<T, ID> {\n\n");
+        sb.append("import ").append(PACKAGE_COMMAND_DATA).append(".Pagination;\n\n");
+        sb.append("public interface BaseMapper<T, ID> {\n\n");
         sb.append("\tList<T> findAll();\n");
         sb.append("\tT getById(ID id);\n");
         sb.append("\tint save(T t);\n");

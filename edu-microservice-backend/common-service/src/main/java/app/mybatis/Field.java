@@ -25,7 +25,7 @@ public class Field {
         this.javaType = jT.getJavaType();
         this.javaImport = jT.getJavaImport();
         this.columnSize = columnSize;
-        this.datatypeName = (LONGTEXT).equals(datatype) ? "LONGVARCHAR" : datatypeName;
+        this.datatypeName = convertDatatypeName(datatypeName);
         this.datatype = datatype;
         this.isNullable = isNullable;
         this.isAutoIncrement = isAutoIncrement;
