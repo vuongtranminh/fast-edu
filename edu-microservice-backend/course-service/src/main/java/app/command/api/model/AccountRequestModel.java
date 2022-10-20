@@ -6,22 +6,22 @@ public class AccountRequestModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private String id;
 	private String password;
 	private String username;
 
 	public AccountRequestModel() { }
 
-	public AccountRequestModel(String password, Integer id, String username) {
+	public AccountRequestModel(String password, String id, String username) {
 		this.password = password;
 		this.id = id;
 		this.username = username;
 	}
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
 	}
 	public String getPassword() {
 		return password;
@@ -42,14 +42,14 @@ public class AccountRequestModel implements Serializable {
 	public static class AccountRequestModelBuilder {
 
 		private String password;
-		private Integer id;
+		private String id;
 		private String username;
 
 		public AccountRequestModelBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
-		public AccountRequestModelBuilder id(Integer id) {
+		public AccountRequestModelBuilder id(String id) {
 			this.id = id;
 			return this;
 		}

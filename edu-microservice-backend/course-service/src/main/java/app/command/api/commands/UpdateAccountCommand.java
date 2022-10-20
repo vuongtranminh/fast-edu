@@ -1,30 +1,27 @@
 package app.command.api.commands;
 
 import java.io.Serializable;
+
+import app.contracts.BaseCommand;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class UpdateAccountCommand implements Serializable {
+public class UpdateAccountCommand extends BaseCommand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@TargetAggregateIdentifier
-	private Integer id;
 	private String password;
 	private String username;
 
-	public UpdateAccountCommand() { }
+	public UpdateAccountCommand(String id) {
+		super(id);
+	}
 
-	public UpdateAccountCommand(String password, Integer id, String username) {
+	public UpdateAccountCommand(String password, String id, String username) {
+		super(id);
 		this.password = password;
-		this.id = id;
 		this.username = username;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -44,14 +41,14 @@ public class UpdateAccountCommand implements Serializable {
 	public static class UpdateAccountCommandBuilder {
 
 		private String password;
-		private Integer id;
+		private String id;
 		private String username;
 
 		public UpdateAccountCommandBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
-		public UpdateAccountCommandBuilder id(Integer id) {
+		public UpdateAccountCommandBuilder id(String id) {
 			this.id = id;
 			return this;
 		}

@@ -9,23 +9,27 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/accounts")
 public class AccountCommandControllerImpl implements AccountCommandController {
 
-    @Autowired
     private CommandGateway commandGateway;
+
+    public AccountCommandControllerImpl(CommandGateway commandGateway) {
+        this.commandGateway = commandGateway;
+    }
 
     @Override
     @PostMapping
     public String save(AccountRequestModel model) {
         CreateAccountCommand command = CreateAccountCommand.builder()
-                .id(model.getId())
                 .username(model.getUsername())
                 .password(model.getPassword())
                 .build();
         commandGateway.sendAndWait(command);
-        return "added Book";
+        return "added Account";
     }
 
     @Override
@@ -42,7 +46,7 @@ public class AccountCommandControllerImpl implements AccountCommandController {
 
     @Override
     @DeleteMapping("/{id}")
-    public String delete(Integer id) {
+    public String delete(String id) {
         commandGateway.sendAndWait(new DeleteAccountCommand(id));
         return "deleted book";
     }

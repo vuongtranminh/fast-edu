@@ -6,17 +6,21 @@ import app.command.api.events.AccountCreatedEvent;
 import app.command.api.events.AccountDeletedEvent;
 import app.command.api.events.AccountEventsHandler;
 import app.command.api.events.AccountUpdatedEvent;
-import app.config.EventsHandler;
+import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@EventsHandler
+@Component
 public class AccountEventsHandlerImpl implements AccountEventsHandler {
 
-    @Autowired
     private AccountMapper accountMapper;
 
+    public AccountEventsHandlerImpl(AccountMapper accountMapper) {
+        this.accountMapper = accountMapper;
+    }
+
     @Override
+    @EventHandler
     public void on(AccountCreatedEvent event) {
         AccountPo accountPo = new AccountPo();
         BeanUtils.copyProperties(event, accountPo);
@@ -24,6 +28,7 @@ public class AccountEventsHandlerImpl implements AccountEventsHandler {
     }
 
     @Override
+    @EventHandler
     public void on(AccountUpdatedEvent event) {
         AccountPo accountPo = accountMapper.getById(event.getId());
         BeanUtils.copyProperties(event, accountPo);
@@ -31,6 +36,7 @@ public class AccountEventsHandlerImpl implements AccountEventsHandler {
     }
 
     @Override
+    @EventHandler
     public void on(AccountDeletedEvent event) {
         accountMapper.deleteById(event.getId());
     }

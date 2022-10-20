@@ -17,7 +17,7 @@ import org.springframework.beans.BeanUtils;
 public class AccountAggregate {
 
     @AggregateIdentifier
-    private Integer id;
+    private String id;
     private String password;
     private String username;
 

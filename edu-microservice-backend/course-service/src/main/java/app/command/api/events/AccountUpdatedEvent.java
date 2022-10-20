@@ -6,22 +6,22 @@ public class AccountUpdatedEvent implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private String id;
 	private String password;
 	private String username;
 
 	public AccountUpdatedEvent() { }
 
-	public AccountUpdatedEvent(String password, Integer id, String username) {
+	public AccountUpdatedEvent(String password, String id, String username) {
 		this.password = password;
 		this.id = id;
 		this.username = username;
 	}
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
 	}
 	public String getPassword() {
 		return password;
@@ -42,14 +42,14 @@ public class AccountUpdatedEvent implements Serializable {
 	public static class AccountUpdatedEventBuilder {
 
 		private String password;
-		private Integer id;
+		private String id;
 		private String username;
 
 		public AccountUpdatedEventBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
-		public AccountUpdatedEventBuilder id(Integer id) {
+		public AccountUpdatedEventBuilder id(String id) {
 			this.id = id;
 			return this;
 		}

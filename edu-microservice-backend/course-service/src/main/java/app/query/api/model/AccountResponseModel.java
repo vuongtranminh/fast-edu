@@ -6,22 +6,22 @@ public class AccountResponseModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private String id;
 	private String password;
 	private String username;
 
 	public AccountResponseModel() { }
 
-	public AccountResponseModel(String password, Integer id, String username) {
+	public AccountResponseModel(String password, String id, String username) {
 		this.password = password;
 		this.id = id;
 		this.username = username;
 	}
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
 	}
 	public String getPassword() {
 		return password;
@@ -42,14 +42,14 @@ public class AccountResponseModel implements Serializable {
 	public static class AccountResponseModelBuilder {
 
 		private String password;
-		private Integer id;
+		private String id;
 		private String username;
 
 		public AccountResponseModelBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
-		public AccountResponseModelBuilder id(Integer id) {
+		public AccountResponseModelBuilder id(String id) {
 			this.id = id;
 			return this;
 		}

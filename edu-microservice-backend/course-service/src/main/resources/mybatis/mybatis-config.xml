@@ -23,9 +23,9 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
 <!--    <typeAliases>-->
-<!--        <package name="app.command.api.data.entity.*Po.java"/>-->
+<!--        <package name="app.command.api.data.entity"/>-->
 <!--    </typeAliases>-->
 <!--    <mappers>-->
-<!--        <package name="classpath:/mybatis/mapper/*Mapper.xml"></package>-->
+<!--        <package name="mybatis/mapper"></package>-->
 <!--    </mappers>-->
 </configuration>

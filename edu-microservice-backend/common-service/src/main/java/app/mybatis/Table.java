@@ -141,10 +141,14 @@ public class Table {
 
         columnInfo.forEach((columnName, column) -> {
             String columnType = column.generateColumnType();
-            columnList.append(columnType).append(", ");
-            columnListUpdate.append("\t\t\t\t<if test=\"").append(column.getColumnNameWithCamel()).append(" != null\">\n");
-            columnListUpdate.append("\t\t\t\t\t").append(column.getColumnName()).append(" = ").append(columnType).append(", \n");
-            columnListUpdate.append("\t\t\t\t</if>\n");
+            if(columnName.equals(primaryKeyColumnName)) {
+                columnList.insert(0, columnType + ", ");
+            } else {
+                columnList.append(columnType).append(", ");
+                columnListUpdate.append("\t\t\t\t<if test=\"").append(column.getColumnNameWithCamel()).append(" != null\">\n");
+                columnListUpdate.append("\t\t\t\t\t").append(column.getColumnName()).append(" = ").append(columnType).append(", \n");
+                columnListUpdate.append("\t\t\t\t</if>\n");
+            }
         });
 
         columnList.delete(columnList.length() - 2, columnList.length());
@@ -166,6 +170,12 @@ public class Table {
                     .append(tableName).append(" where ").append(primaryKeyColumnName).append(" = ")
                     .append(primaryKeyInfo.generateColumnType()).append("\n");
             sb.append("\t</select>\n");
+
+            // save
+            sb.append("\t<insert id=\"save\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
+            sb.append("\t\tinsert into ").append(tableName).append(" (<include refid=\"Base_Column_List\" />, <include refid=\"Blob_Column_List\" />) \n\t\tvalues (")
+                    .append(columnList).append(")\n");
+            sb.append("\t</insert>\n");
         } else {
             // findAll
             sb.append("\t<select id=\"findAll\" resultMap=\"BaseResultMap\">\n");
@@ -183,13 +193,13 @@ public class Table {
                     .append(tableName).append(" where ").append(primaryKeyColumnName).append(" = ")
                     .append(primaryKeyInfo.generateColumnType()).append("\n");
             sb.append("\t</select>\n");
-        }
 
-        // save
-        sb.append("\t<insert id=\"save\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
-        sb.append("\t\tinsert into ").append(tableName).append(" (<include refid=\"Base_Column_List\" />, <include refid=\"Blob_Column_List\" />) \n\t\tvalues (")
-                .append(columnList).append(")\n");
-        sb.append("\t</insert>\n");
+            // save
+            sb.append("\t<insert id=\"save\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");
+            sb.append("\t\tinsert into ").append(tableName).append(" (<include refid=\"Base_Column_List\" />) \n\t\tvalues (")
+                    .append(columnList).append(")\n");
+            sb.append("\t</insert>\n");
+        }
 
         // updateById
         sb.append("\t<update id=\"updateById\" parameterType=\"" + PACKAGE_COMMAND_DATA_ENTITY + "." + className + "Po\">\n");

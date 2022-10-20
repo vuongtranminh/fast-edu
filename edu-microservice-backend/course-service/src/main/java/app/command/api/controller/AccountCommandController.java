@@ -10,6 +10,6 @@ public interface AccountCommandController {
 
     public String update(@RequestBody AccountRequestModel model);
 
-    public String delete(@PathVariable Integer id);
+    public String delete(@PathVariable String id);
 
 }

@@ -1,30 +1,26 @@
 package app.command.api.commands;
 
 import java.io.Serializable;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class CreateAccountCommand implements Serializable {
+import app.contracts.BaseCommand;
+
+public class CreateAccountCommand extends BaseCommand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@TargetAggregateIdentifier
-	private Integer id;
 	private String password;
 	private String username;
 
-	public CreateAccountCommand() { }
+	public CreateAccountCommand() {
+		super();
+	}
 
-	public CreateAccountCommand(String password, Integer id, String username) {
+	public CreateAccountCommand(String password, String username) {
+		super();
 		this.password = password;
-		this.id = id;
 		this.username = username;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -44,24 +40,20 @@ public class CreateAccountCommand implements Serializable {
 	public static class CreateAccountCommandBuilder {
 
 		private String password;
-		private Integer id;
 		private String username;
 
 		public CreateAccountCommandBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
-		public CreateAccountCommandBuilder id(Integer id) {
-			this.id = id;
-			return this;
-		}
+
 		public CreateAccountCommandBuilder username(String username) {
 			this.username = username;
 			return this;
 		}
 
 		public CreateAccountCommand build() {
-			return new CreateAccountCommand(this.password, this.id, this.username);
+			return new CreateAccountCommand(this.password, this.username);
 		}
 
 	}
