@@ -6,10 +6,7 @@ import app.command.api.commands.UpdateAccountCommand;
 import app.command.api.controller.AccountCommandController;
 import app.command.api.model.AccountRequestModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/accounts")

@@ -4,7 +4,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.UUID;
 
-public class BaseCommand implements Identifiable {
+public class BaseCommand implements Identifiable<String> {
 
     @TargetAggregateIdentifier
     private String id;

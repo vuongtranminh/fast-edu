@@ -80,6 +80,7 @@
 
 	<modules>
 		<module>service-discovery</module>
+		<module>api-gateway</module>
 		<module>common-service</module>
 		<module>course-service</module>
 	</modules>

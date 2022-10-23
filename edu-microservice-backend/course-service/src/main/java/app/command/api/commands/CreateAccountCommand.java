@@ -1,8 +1,8 @@
 package app.command.api.commands;
 
-import java.io.Serializable;
-
 import app.contracts.BaseCommand;
+
+import java.io.Serializable;
 
 public class CreateAccountCommand extends BaseCommand implements Serializable {
 

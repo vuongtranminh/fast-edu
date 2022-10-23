@@ -1,7 +1,7 @@
 package app.contracts;
 
-public interface Identifiable {
+public interface Identifiable<T> {
 
-    String id();
+    T id();
 
 }
