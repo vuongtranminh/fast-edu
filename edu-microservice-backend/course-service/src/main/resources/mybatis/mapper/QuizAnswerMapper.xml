@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.dao.QuizAnswerMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.entity.QuizAnswerPo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="quiz_id" jdbcType="VARCHAR" property="quizId" />
+		<result column="is_correct" jdbcType="BIT" property="isCorrect" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="app.command.api.data.entity.QuizAnswerPo">
+		<result column="answer" jdbcType="LONGVARCHAR" property="answer" />
+		<result column="explanation" jdbcType="LONGVARCHAR" property="explanation" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, quiz_id, is_correct
+	</sql>
+	<sql id="Blob_Column_List">
+		answer, explanation
+	</sql>
+	<select id="findAll" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from quiz_answer
+	</select>
+	<select id="getById" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from quiz_answer where id = #{id, jdbcType=VARCHAR}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.entity.QuizAnswerPo">
+		insert into quiz_answer (<include refid="Base_Column_List" />, <include refid="Blob_Column_List" />) 
+		values (#{id, jdbcType=VARCHAR}, #{quizId, jdbcType=VARCHAR}, #{answer, jdbcType=LONGVARCHAR}, #{explanation, jdbcType=LONGVARCHAR}, #{isCorrect, jdbcType=BIT})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.entity.QuizAnswerPo">
+		update quiz_answer
+			<set>
+				<if test="quizId != null">
+					quiz_id = #{quizId, jdbcType=VARCHAR}, 
+				</if>
+				<if test="answer != null">
+					answer = #{answer, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="explanation != null">
+					explanation = #{explanation, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="isCorrect != null">
+					is_correct = #{isCorrect, jdbcType=BIT}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteById">
+		delete from quiz_answer where id = #{id, jdbcType=VARCHAR}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from quiz_answer 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from quiz_answer
+	</select>
+</mapper>

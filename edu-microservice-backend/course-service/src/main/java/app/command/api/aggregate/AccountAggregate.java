@@ -1,11 +1,5 @@
 package app.command.api.aggregate;
 
-import app.command.api.commands.CreateAccountCommand;
-import app.command.api.commands.DeleteAccountCommand;
-import app.command.api.commands.UpdateAccountCommand;
-import app.command.api.events.AccountCreatedEvent;
-import app.command.api.events.AccountDeletedEvent;
-import app.command.api.events.AccountUpdatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

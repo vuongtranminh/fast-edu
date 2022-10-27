@@ -1,8 +1,5 @@
 package app.command.api.controller.impl;
 
-import app.command.api.commands.CreateAccountCommand;
-import app.command.api.commands.DeleteAccountCommand;
-import app.command.api.commands.UpdateAccountCommand;
 import app.command.api.controller.AccountCommandController;
 import app.command.api.model.AccountRequestModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;

@@ -1,13 +1,8 @@
 package app.query.api.projection;
 
-import app.command.api.data.dao.AccountMapper;
-import app.command.api.data.entity.AccountPo;
 import app.query.api.model.AccountResponseModel;
-import app.query.api.queries.GetAccountQuery;
-import app.query.api.queries.GetAccountsQuery;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

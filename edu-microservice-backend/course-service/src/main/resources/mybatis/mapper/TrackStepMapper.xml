@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.dao.TrackStepMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.entity.TrackStepPo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="is_bookmarked" jdbcType="BIT" property="isBookmarked" />
+		<result column="is_published" jdbcType="BIT" property="isPublished" />
+		<result column="step_type" jdbcType="VARCHAR" property="stepType" />
+		<result column="track_id" jdbcType="VARCHAR" property="trackId" />
+		<result column="track_step_level_id" jdbcType="VARCHAR" property="trackStepLevelId" />
+		<result column="position" jdbcType="INTEGER" property="position" />
+		<result column="step_id" jdbcType="VARCHAR" property="stepId" />
+		<result column="published_at" jdbcType="TIMESTAMP" property="publishedAt" />
+		<result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, updated_at, is_bookmarked, is_published, step_type, track_id, track_step_level_id, position, step_id, published_at, deleted_at
+	</sql>
+	<select id="findAll" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track_step
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track_step where id = #{id, jdbcType=VARCHAR}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.entity.TrackStepPo">
+		insert into track_step (<include refid="Base_Column_List" />) 
+		values (#{id, jdbcType=VARCHAR}, #{updatedAt, jdbcType=TIMESTAMP}, #{isBookmarked, jdbcType=BIT}, #{isPublished, jdbcType=BIT}, #{stepType, jdbcType=VARCHAR}, #{trackId, jdbcType=VARCHAR}, #{trackStepLevelId, jdbcType=VARCHAR}, #{position, jdbcType=INTEGER}, #{stepId, jdbcType=VARCHAR}, #{publishedAt, jdbcType=TIMESTAMP}, #{deletedAt, jdbcType=TIMESTAMP})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.entity.TrackStepPo">
+		update track_step
+			<set>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="isBookmarked != null">
+					is_bookmarked = #{isBookmarked, jdbcType=BIT}, 
+				</if>
+				<if test="isPublished != null">
+					is_published = #{isPublished, jdbcType=BIT}, 
+				</if>
+				<if test="stepType != null">
+					step_type = #{stepType, jdbcType=VARCHAR}, 
+				</if>
+				<if test="trackId != null">
+					track_id = #{trackId, jdbcType=VARCHAR}, 
+				</if>
+				<if test="trackStepLevelId != null">
+					track_step_level_id = #{trackStepLevelId, jdbcType=VARCHAR}, 
+				</if>
+				<if test="position != null">
+					position = #{position, jdbcType=INTEGER}, 
+				</if>
+				<if test="stepId != null">
+					step_id = #{stepId, jdbcType=VARCHAR}, 
+				</if>
+				<if test="publishedAt != null">
+					published_at = #{publishedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="deletedAt != null">
+					deleted_at = #{deletedAt, jdbcType=TIMESTAMP}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteById">
+		delete from track_step where id = #{id, jdbcType=VARCHAR}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track_step 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from track_step
+	</select>
+</mapper>

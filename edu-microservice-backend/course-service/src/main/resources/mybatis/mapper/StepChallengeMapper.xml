@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.dao.StepChallengeMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.entity.StepChallengePo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="duration" jdbcType="INTEGER" property="duration" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="app.command.api.data.entity.StepChallengePo">
+		<result column="description" jdbcType="LONGVARCHAR" property="description" />
+		<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, duration, updated_at, created_at, title
+	</sql>
+	<sql id="Blob_Column_List">
+		description, content
+	</sql>
+	<select id="findAll" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from step_challenge
+	</select>
+	<select id="getById" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from step_challenge where id = #{id, jdbcType=VARCHAR}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.entity.StepChallengePo">
+		insert into step_challenge (<include refid="Base_Column_List" />, <include refid="Blob_Column_List" />) 
+		values (#{id, jdbcType=VARCHAR}, #{duration, jdbcType=INTEGER}, #{updatedAt, jdbcType=TIMESTAMP}, #{createdAt, jdbcType=TIMESTAMP}, #{description, jdbcType=LONGVARCHAR}, #{title, jdbcType=VARCHAR}, #{content, jdbcType=LONGVARCHAR})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.entity.StepChallengePo">
+		update step_challenge
+			<set>
+				<if test="duration != null">
+					duration = #{duration, jdbcType=INTEGER}, 
+				</if>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="createdAt != null">
+					created_at = #{createdAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="description != null">
+					description = #{description, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="title != null">
+					title = #{title, jdbcType=VARCHAR}, 
+				</if>
+				<if test="content != null">
+					content = #{content, jdbcType=LONGVARCHAR}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteById">
+		delete from step_challenge where id = #{id, jdbcType=VARCHAR}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from step_challenge 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from step_challenge
+	</select>
+</mapper>

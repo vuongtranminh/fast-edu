@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.dao.TrackMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.entity.TrackPo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="duration" jdbcType="INTEGER" property="duration" />
+		<result column="course_id" jdbcType="VARCHAR" property="courseId" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="is_free" jdbcType="BIT" property="isFree" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="position" jdbcType="INTEGER" property="position" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+		<result column="is_optional" jdbcType="BIT" property="isOptional" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, duration, course_id, updated_at, is_free, created_at, position, title, deleted_at, is_optional
+	</sql>
+	<select id="findAll" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track where id = #{id, jdbcType=VARCHAR}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.entity.TrackPo">
+		insert into track (<include refid="Base_Column_List" />) 
+		values (#{id, jdbcType=VARCHAR}, #{duration, jdbcType=INTEGER}, #{courseId, jdbcType=VARCHAR}, #{updatedAt, jdbcType=TIMESTAMP}, #{isFree, jdbcType=BIT}, #{createdAt, jdbcType=TIMESTAMP}, #{position, jdbcType=INTEGER}, #{title, jdbcType=VARCHAR}, #{deletedAt, jdbcType=TIMESTAMP}, #{isOptional, jdbcType=BIT})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.entity.TrackPo">
+		update track
+			<set>
+				<if test="duration != null">
+					duration = #{duration, jdbcType=INTEGER}, 
+				</if>
+				<if test="courseId != null">
+					course_id = #{courseId, jdbcType=VARCHAR}, 
+				</if>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="isFree != null">
+					is_free = #{isFree, jdbcType=BIT}, 
+				</if>
+				<if test="createdAt != null">
+					created_at = #{createdAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="position != null">
+					position = #{position, jdbcType=INTEGER}, 
+				</if>
+				<if test="title != null">
+					title = #{title, jdbcType=VARCHAR}, 
+				</if>
+				<if test="deletedAt != null">
+					deleted_at = #{deletedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="isOptional != null">
+					is_optional = #{isOptional, jdbcType=BIT}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteById">
+		delete from track where id = #{id, jdbcType=VARCHAR}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from track 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from track
+	</select>
+</mapper>

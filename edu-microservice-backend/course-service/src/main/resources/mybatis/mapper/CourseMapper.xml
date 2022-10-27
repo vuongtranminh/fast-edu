@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.command.api.data.dao.CourseMapper">
+	<resultMap id="BaseResultMap" type="app.command.api.data.entity.CoursePo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="last_completed_at" jdbcType="TIMESTAMP" property="lastCompletedAt" />
+		<result column="is_published" jdbcType="BIT" property="isPublished" />
+		<result column="level_id" jdbcType="INTEGER" property="levelId" />
+		<result column="icon" jdbcType="VARCHAR" property="icon" />
+		<result column="students_count" jdbcType="INTEGER" property="studentsCount" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="video" jdbcType="VARCHAR" property="video" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="is_pre_order" jdbcType="BIT" property="isPreOrder" />
+		<result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="price" jdbcType="DECIMAL" property="price" />
+		<result column="completed_content" jdbcType="VARCHAR" property="completedContent" />
+		<result column="published_at" jdbcType="TIMESTAMP" property="publishedAt" />
+		<result column="slug" jdbcType="VARCHAR" property="slug" />
+		<result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+		<result column="image" jdbcType="VARCHAR" property="image" />
+		<result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+		<result column="old_price" jdbcType="DECIMAL" property="oldPrice" />
+		<result column="certificate_name" jdbcType="VARCHAR" property="certificateName" />
+		<result column="is_selling" jdbcType="BIT" property="isSelling" />
+		<result column="priority" jdbcType="INTEGER" property="priority" />
+		<result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+		<result column="pre_order_price" jdbcType="DECIMAL" property="preOrderPrice" />
+		<result column="video_type" jdbcType="VARCHAR" property="videoType" />
+		<result column="is_pro" jdbcType="BIT" property="isPro" />
+		<result column="is_comming_soon" jdbcType="BIT" property="isCommingSoon" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="app.command.api.data.entity.CoursePo">
+		<result column="description" jdbcType="LONGVARCHAR" property="description" />
+		<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, last_completed_at, is_published, level_id, icon, students_count, created_at, video, title, is_pre_order, video_url, updated_at, price, completed_content, published_at, slug, icon_url, image, image_url, old_price, certificate_name, is_selling, priority, deleted_at, pre_order_price, video_type, is_pro, is_comming_soon
+	</sql>
+	<sql id="Blob_Column_List">
+		description, content
+	</sql>
+	<select id="findAll" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from course
+	</select>
+	<select id="getById" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from course where id = #{id, jdbcType=VARCHAR}
+	</select>
+	<insert id="save" parameterType="app.command.api.data.entity.CoursePo">
+		insert into course (<include refid="Base_Column_List" />, <include refid="Blob_Column_List" />) 
+		values (#{id, jdbcType=VARCHAR}, #{lastCompletedAt, jdbcType=TIMESTAMP}, #{isPublished, jdbcType=BIT}, #{levelId, jdbcType=INTEGER}, #{icon, jdbcType=VARCHAR}, #{studentsCount, jdbcType=INTEGER}, #{description, jdbcType=LONGVARCHAR}, #{createdAt, jdbcType=TIMESTAMP}, #{video, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{isPreOrder, jdbcType=BIT}, #{content, jdbcType=LONGVARCHAR}, #{videoUrl, jdbcType=VARCHAR}, #{updatedAt, jdbcType=TIMESTAMP}, #{price, jdbcType=DECIMAL}, #{completedContent, jdbcType=VARCHAR}, #{publishedAt, jdbcType=TIMESTAMP}, #{slug, jdbcType=VARCHAR}, #{iconUrl, jdbcType=VARCHAR}, #{image, jdbcType=VARCHAR}, #{imageUrl, jdbcType=VARCHAR}, #{oldPrice, jdbcType=DECIMAL}, #{certificateName, jdbcType=VARCHAR}, #{isSelling, jdbcType=BIT}, #{priority, jdbcType=INTEGER}, #{deletedAt, jdbcType=TIMESTAMP}, #{preOrderPrice, jdbcType=DECIMAL}, #{videoType, jdbcType=VARCHAR}, #{isPro, jdbcType=BIT}, #{isCommingSoon, jdbcType=BIT})
+	</insert>
+	<update id="updateById" parameterType="app.command.api.data.entity.CoursePo">
+		update course
+			<set>
+				<if test="lastCompletedAt != null">
+					last_completed_at = #{lastCompletedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="isPublished != null">
+					is_published = #{isPublished, jdbcType=BIT}, 
+				</if>
+				<if test="levelId != null">
+					level_id = #{levelId, jdbcType=INTEGER}, 
+				</if>
+				<if test="icon != null">
+					icon = #{icon, jdbcType=VARCHAR}, 
+				</if>
+				<if test="studentsCount != null">
+					students_count = #{studentsCount, jdbcType=INTEGER}, 
+				</if>
+				<if test="description != null">
+					description = #{description, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="createdAt != null">
+					created_at = #{createdAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="video != null">
+					video = #{video, jdbcType=VARCHAR}, 
+				</if>
+				<if test="title != null">
+					title = #{title, jdbcType=VARCHAR}, 
+				</if>
+				<if test="isPreOrder != null">
+					is_pre_order = #{isPreOrder, jdbcType=BIT}, 
+				</if>
+				<if test="content != null">
+					content = #{content, jdbcType=LONGVARCHAR}, 
+				</if>
+				<if test="videoUrl != null">
+					video_url = #{videoUrl, jdbcType=VARCHAR}, 
+				</if>
+				<if test="updatedAt != null">
+					updated_at = #{updatedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="price != null">
+					price = #{price, jdbcType=DECIMAL}, 
+				</if>
+				<if test="completedContent != null">
+					completed_content = #{completedContent, jdbcType=VARCHAR}, 
+				</if>
+				<if test="publishedAt != null">
+					published_at = #{publishedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="slug != null">
+					slug = #{slug, jdbcType=VARCHAR}, 
+				</if>
+				<if test="iconUrl != null">
+					icon_url = #{iconUrl, jdbcType=VARCHAR}, 
+				</if>
+				<if test="image != null">
+					image = #{image, jdbcType=VARCHAR}, 
+				</if>
+				<if test="imageUrl != null">
+					image_url = #{imageUrl, jdbcType=VARCHAR}, 
+				</if>
+				<if test="oldPrice != null">
+					old_price = #{oldPrice, jdbcType=DECIMAL}, 
+				</if>
+				<if test="certificateName != null">
+					certificate_name = #{certificateName, jdbcType=VARCHAR}, 
+				</if>
+				<if test="isSelling != null">
+					is_selling = #{isSelling, jdbcType=BIT}, 
+				</if>
+				<if test="priority != null">
+					priority = #{priority, jdbcType=INTEGER}, 
+				</if>
+				<if test="deletedAt != null">
+					deleted_at = #{deletedAt, jdbcType=TIMESTAMP}, 
+				</if>
+				<if test="preOrderPrice != null">
+					pre_order_price = #{preOrderPrice, jdbcType=DECIMAL}, 
+				</if>
+				<if test="videoType != null">
+					video_type = #{videoType, jdbcType=VARCHAR}, 
+				</if>
+				<if test="isPro != null">
+					is_pro = #{isPro, jdbcType=BIT}, 
+				</if>
+				<if test="isCommingSoon != null">
+					is_comming_soon = #{isCommingSoon, jdbcType=BIT}, 
+				</if>
+
+			</set> 
+		where id = #{id, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteById">
+		delete from course where id = #{id, jdbcType=VARCHAR}
+	</delete>
+	<select id="pagination" parameterType="app.command.api.data.Pagination" resultMap="ResultMapWithBLOBs">
+		select <include refid="Base_Column_List" />, <include refid="Blob_Column_List" /> from course 
+		order by id desc 
+		limit #{offset, jdbcType=BIGINT} ,#{limit,jdbcType=INTEGER}
+	</select>
+	<select id="countAll" resultType="java.lang.Long">
+		select count(*) from course
+	</select>
+</mapper>

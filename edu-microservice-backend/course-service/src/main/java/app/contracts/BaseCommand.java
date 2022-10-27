@@ -10,15 +10,15 @@ public class BaseCommand implements Identifiable<String> {
     private String id;
 
     public BaseCommand() {
-        setId(UUID.randomUUID().toString());
+        this(UUID.randomUUID().toString());
     }
 
     public BaseCommand(String id) {
-        this.id = id == null ? null : id.trim();
+        setId(id);
     }
 
     @Override
-    public String id() {
+    public String getId() {
         return this.id;
     }
 

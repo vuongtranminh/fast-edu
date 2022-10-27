@@ -1,11 +1,6 @@
 package app.command.api.events.impl;
 
-import app.command.api.data.dao.AccountMapper;
-import app.command.api.data.entity.AccountPo;
-import app.command.api.events.AccountCreatedEvent;
-import app.command.api.events.AccountDeletedEvent;
 import app.command.api.events.AccountEventsHandler;
-import app.command.api.events.AccountUpdatedEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
